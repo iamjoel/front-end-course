@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery todo mvc demo</title>
-  <!-- <link rel="stylesheet" href="node_modules/todomvc-common/base.css"> -->
+  <title>jQuery • TodoMVC</title>
   <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 </head>
 
@@ -21,12 +20,13 @@
       <ul id="todo-list">
       </ul>
     </section>
+    <footer id="footer"></footer>
   </section>
   <script type="text/x-template" id="todo-template">
     <% todolists.forEach(function(each){ %>
       <li class="<%= each.isComplete ? 'completed' : '' %>" data-id="<%= each.id %>">
         <div class="view">
-          <input class="toggle" type="checkbox" <%= each.isComplete ? 'checked' : '' %> >
+          <input class="toggle" type="checkbox" <%=each.isComplete ? 'checked' : '' %> >
           <label><%= each.title %></label>
           <button class="destroy"></button>
         </div>
@@ -34,12 +34,30 @@
       </li>
       <% }) %>
   </script>
+  <script type="text/x-template" id="foot-template">
+    <span id="todo-count"><strong><%= activeTodosCount %></strong> items left</span>
+    <ul id="filters">
+      <li>
+        <a class="<%= filter === 'all' ? 'selected' : '' %>" href="#/all">All</a>
+      </li>
+      <li>
+        <a class="<%= filter === 'active' ? 'selected' : '' %>" href="#/active">Active</a>
+      </li>
+      <li>
+        <a class="<%= filter === 'completed' ? 'selected' : '' %>" href="#/completed">Completed</a>
+      </li>
+    </ul>
+    <% if(completedTodosCount > 0){ %>
+    <button id="clear-completed">Clear completed</button>
+    <% } %>
+  </script>
   <footer id="info">
     <p>Double-click to edit a todo</p>
     <p>Created by <a href="https://github.com/iamjoel/">Joel</a></p>
   </footer>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/director/build/director.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 

@@ -10,7 +10,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "todomvc-common": "1.0.1",
     "todomvc-app-css": "1.0.1",
     "jquery": "2.2.3",
     "director": "1.2.2",
