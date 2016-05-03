@@ -13,7 +13,7 @@
     "todomvc-common": "1.0.1",
     "todomvc-app-css": "1.0.1",
     "jquery": "2.2.3",
-    "lodash": "4.11.1",
-    "director": "1.2.2"
+    "director": "1.2.2",
+    "underscore": "^1.8.3"
   }
 }
