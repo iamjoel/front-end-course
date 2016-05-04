@@ -25,6 +25,9 @@
 
 ### 综合
 * 来做个 Todo MVC 吧
+* 提高代码质量
+  * Clean Code(代码简洁之道)
+  * Maintainable JavaScript(编写可维护的JavaScript)
 * 性能优化
 * webpack
 * 前端项目构建
