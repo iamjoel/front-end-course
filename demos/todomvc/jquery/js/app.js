@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   var util = {
     generateId: function() {
-      return Date.now();
+      return Date.now ? Date.now() : (new Date()).getTime();
     },
     store: function(namespace, data) {
       if (arguments.length > 1) {
