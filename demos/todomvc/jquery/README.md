@@ -13,5 +13,5 @@
   * .toggle
 
 ## 项目启动
-* npm i
-* 在浏览器中打开 index.html
+1. 安装依赖 `npm i`
+1. 在浏览器中打开 index.html

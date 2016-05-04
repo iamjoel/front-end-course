@@ -7,4 +7,4 @@
 
 ## 实现 Demo
 * [jQuery](jquery)
-* [更多](todomvc)
+* [更多](http://todomvc.com/)
