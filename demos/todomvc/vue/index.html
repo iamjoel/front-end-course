@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vue • TodoMVC</title>
+  <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+  <style> [v-cloak] { display: none; } </style>
+</head>
+
+<body>
+  <section id="todoapp">
+    <header class="header">
+      <h1>todos</h1>
+      <input id="new-todo" placeholder="What needs to be done?" autofocus @keyup.enter="create()" v-model="newTodo">
+    </header>
+    <section id="main" v-show="todos.length > 0" v-cloak>
+      <input id="toggle-all" type="checkbox" v-model="allStatus">
+      <label for="toggle-all">Mark all as complete</label>
+      <ul id="todo-list">
+        <li class="todo" v-for="todo in filteredTodos" :class="{completed: todo.completed, editing: todo == editingTodo}">
+          <div class="view">
+            <input class="toggle" type="checkbox" v-model="todo.completed">
+            <label @dblclick="edit(todo)">{{todo.title}}</label>
+            <button class="destroy" @click="remove(todo)"></button>
+          </div>
+          <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editingTodo" @blur="update(todo)" @keyup.enter="update(todo)" @keyup.esc="cancelEdit(todo)">
+        </li>
+      </ul>
+    </section>
+    <footer id="footer" v-show="todos.length > 0" v-cloak>
+      <span id="todo-count">
+          <!-- pluralize 根据参数，将单词变成单数或复数的过滤器 -->
+          <strong v-text="activeItemNum"></strong> {{activeItemNum | pluralize 'item'}}<!-- 相当与 {{activeItemNum > 1 ?  'items' : 'item'}}   -->left
+        </span>
+        <ul id="filters">
+          <li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
+          <li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
+          <li><a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
+        </ul>
+        <button id="clear-completed" @click="removeAllCompleted" v-show="completedItemNum > 0">Clear completed</button>
+    </footer>
+  </section>
+  <footer id="info">
+    <p>Double-click to edit a todo</p>
+    <p>Created by <a href="https://github.com/iamjoel/">Joel</a></p>
+  </footer>
+  <script src="node_modules/vue/dist/vue.min.js"></script>
+  <script src="node_modules/director/build/director.min.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/routes.js"></script>
+</body>
+
+</html>

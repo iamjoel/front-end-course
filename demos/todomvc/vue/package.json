@@ -1,14 +1,13 @@
 {
   "private": true,
-  "name": "todomvc-jquery",
+  "name": "todomvc-vue",
   "version": "1.0.0",
   "main": "index.html",
   "author": "Joel",
   "license": "MIT",
   "dependencies": {
     "todomvc-app-css": "1.0.1",
-    "jquery": "2.2.3",
-    "director": "1.2.2",
-    "underscore": "1.8.3"
+    "vue": "1.0.22",
+    "director": "1.2.2"
   }
 }
