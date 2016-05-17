@@ -15,3 +15,7 @@
 ## 项目启动
 1. 安装依赖 `npm i`
 1. 在浏览器中打开 index.html
+
+## 资源网站
+* [JQuery API](http://api.jquery.com/)
+* [JQuery API 速查](http://oscarotero.com/jquery/)
