@@ -48,6 +48,19 @@
           node.className += ' ' + className;
         }
       });
+      return this;
+    },
+    closest: function (selector) {
+      var isFind = false;
+      var hasNode = !!this.nodeList.length;
+      var parentNode;
+      if(hasNode){
+        var currNode = this.nodeList[0];
+        while(!isFind && currNode){
+          currNode = currNode.parentNode();
+        }
+      }
+      return !isFind ? new nodeList() : parentNode;
     }
   };
 
