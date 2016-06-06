@@ -56,9 +56,7 @@
 	var router = new VueRouter();
 	router.map({
 	  '/music':{
-	    component: function (resolve) {
-	      return __webpack_require__(/*! music */ 3);
-	    }
+	    component: __webpack_require__(/*! music */ 3)
 	  },
 	  '/film':{
 	    component: Vue.extend({
@@ -111,9 +109,15 @@
 /*!**************************************!*\
   !*** ./assets/module/music/index.js ***!
   \**************************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports('aaa');
+	var Vue = __webpack_require__(/*! vue */ 1);
+	
+	var Music = Vue.extend({
+	  template: 'Music page'
+	});
+	module.exports  = Music;
+
 
 /***/ }
 /******/ ]);

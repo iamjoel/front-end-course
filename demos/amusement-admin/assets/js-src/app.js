@@ -7,9 +7,7 @@ Vue.use(VueRouter);
 var router = new VueRouter();
 router.map({
   '/music':{
-    component: function (resolve) {
-      return require('music');
-    }
+    component: require('music')
   },
   '/film':{
     component: Vue.extend({
