@@ -1,0 +1,19 @@
+{
+  "name": "amusement",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "scss": "sass --watch assets/scss:assets/css",
+    "build:js": "node_modules/.bin/webpack --watch -d"
+  },
+  "author": "Joel",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "vue": "1.0.24",
+    "jquery": "2.2.3",
+    "vue-router": "0.7.13",
+    "webpack": "1.12.14"
+  }
+}
