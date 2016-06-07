@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "scss": "sass --watch assets/scss:assets/css",
-    "build:js": "node_modules/.bin/webpack --watch -d"
+    "watch:scss": "sass --watch assets/scss:assets/css",
+    "watch:js": "node_modules/.bin/webpack --watch -d",
+    "start:server": "node_modules/.bin/anywhere 1521",
+    "start": "node_modules/.bin/npm-run-all --parallel start:server watch:scss watch:js"
   },
   "author": "Joel",
   "license": "MIT",
@@ -13,7 +15,13 @@
     "bootstrap": "3.3.6",
     "vue": "1.0.24",
     "jquery": "2.2.3",
-    "vue-router": "0.7.13",
-    "webpack": "1.12.14"
+    "vue-router": "0.7.13"
+  },
+  "devDependencies": {
+    "npm-run-all": "1.6.0",
+    "webpack": "1.12.14",
+    "anywhere": "1.2.0",
+    "html-loader": "0.4.3",
+    "raw-loader": "^0.5.1"
   }
 }

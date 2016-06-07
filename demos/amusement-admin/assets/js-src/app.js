@@ -1,24 +1,11 @@
 var Vue = require('vue');
-var VueRouter  = require('vue-router');
+var VueRouter = require('vue-router');
 
 // 路由
 Vue.use(VueRouter);
-
 var router = new VueRouter();
-router.map({
-  '/music':{
-    component: require('music')
-  },
-  '/film':{
-    component: Vue.extend({
-        template: 'File page'
-    })
-  }
-});
+router.map(require('./routes'));
 
+// 启动
+router.start(require('../component/app/index'), '#app');
 
-// var app = new Vue({
-//   el: '#app'
-// });
-
-router.start(Vue.extend({}), '#app');
