@@ -8,7 +8,7 @@ var routes = [
 }];
 
 
-// 将配置转化成
+// 将配置转化成 vue-route 需要的个数
 var routesMap = require('./helper/route-helper')(routes);
 
 module.exports = routesMap;
