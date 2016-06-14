@@ -1,9 +1,14 @@
-var routes = {
-  '/music':{
-    component: require('music')
-  },
-  '/film':{
-    component: require('film')
-  }
-};
-module.exports = routes;
+// 路由配置
+var routes = [
+{
+  'routePath': '/music'
+},{
+  'routePath': '/film',
+  'controllerPath': 'film/index'
+}];
+
+
+// 将配置转化成
+var routesMap = require('./helper/route-helper')(routes);
+
+module.exports = routesMap;

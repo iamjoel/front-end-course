@@ -1,6 +1,34 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+/******/
+/******/ 	};
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +54,29 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+/******/
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+/******/
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({}[chunkId]||chunkId) + ".js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -34,7 +85,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/assets/js/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -56,7 +107,7 @@
 	router.map(__webpack_require__(/*! ./routes */ 3));
 	
 	// 启动
-	router.start(__webpack_require__(/*! ../component/app/index */ 6), '#app');
+	router.start(__webpack_require__(/*! ../component/app/index */ 7), '#app');
 	
 
 
@@ -98,48 +149,27 @@
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var routes = {
-	  '/music':{
-	    component: __webpack_require__(/*! music */ 4)
-	  },
-	  '/film':{
-	    component: __webpack_require__(/*! film */ 5)
-	  }
-	};
-	module.exports = routes;
-
-/***/ },
-/* 4 */
-/*!*****************************************!*\
-  !*** ./assets/component/music/index.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var Vue = __webpack_require__(/*! vue */ 1);
+	// 路由配置
+	var routes = [
+	{
+	  'routePath': '/music'
+	},{
+	  'routePath': '/film',
+	  'controllerPath': 'film/index'
+	}];
 	
-	var Music = Vue.extend({
-	  template: __webpack_require__(/*! ./index.html */ 9)
-	});
-	module.exports  = Music;
-
-
-/***/ },
-/* 5 */
-/*!****************************************!*\
-  !*** ./assets/component/film/index.js ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var Vue = __webpack_require__(/*! vue */ 1);
 	
-	var Music = Vue.extend({
-	  template: 'Film'
-	});
-	module.exports  = Music;
+	// 将配置转化成
+	var routesMap = __webpack_require__(/*! ./helper/route-helper */ 11)(routes);
+	
+	module.exports = routesMap;
 
 
 /***/ },
-/* 6 */
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /*!***************************************!*\
   !*** ./assets/component/app/index.js ***!
   \***************************************/
@@ -147,25 +177,25 @@
 
 	var Vue = __webpack_require__(/*! vue */ 1);
 	module.exports = Vue.extend({
-	  template: __webpack_require__(/*! ./index.html */ 7),
+	  template: __webpack_require__(/*! ./index.html */ 8),
 	  data: function() {
 	    return {
-	      menu: __webpack_require__(/*! setting */ 8).menu
+	      menu: __webpack_require__(/*! setting */ 9).menu
 	    }
 	  }
 	});
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!*****************************************!*\
   !*** ./assets/component/app/index.html ***!
   \*****************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"nav in menu\">\r\n        <li><a v-link=\"{ path: nav.path }\">{{nav.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <router-view></router-view>\r\n</div>\r\n";
+	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"nav in menu\">\r\n        <li v-link=\"{ path: nav.path,activeClass:'active' }\"><a href=\"javascript:void(0);\">{{nav.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <router-view></router-view>\r\n</div>\r\n";
 
 /***/ },
-/* 8 */
+/* 9 */
 /*!********************!*\
   !*** ./setting.js ***!
   \********************/
@@ -185,13 +215,50 @@
 
 
 /***/ },
-/* 9 */
-/*!*******************************************!*\
-  !*** ./assets/component/music/index.html ***!
-  \*******************************************/
-/***/ function(module, exports) {
+/* 10 */,
+/* 11 */
+/*!**********************************************!*\
+  !*** ./assets/js-src/helper/route-helper.js ***!
+  \**********************************************/
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "Muisc Page!";
+	function Helper() {
+	  this.routes = {};
+	}
+	
+	Helper.prototype = {
+	  add: function(routePath, compontPath) {
+	    this.routes[routePath] = {
+	      component: function(resolve) {
+	        __webpack_require__.e/* nsure */(2, function(require) {
+	
+	          /*
+	           * 必须这么些，如果没有字符串那前缀，会加载不到。
+	           * 字符串不能是变量。如果不加js，则如果
+	           */
+	          // routePath:'/music/xxx' => compontPath: /music/index/
+	          compontPath = compontPath || routePath.match(/^\/?([^/]*)/)[1] + '/index';
+	          compontPath = compontPath.replace(/\.js$/, '');
+	          resolve(__webpack_require__(/*! ../../component */ 16)("./" + compontPath + '.js'));
+	        });
+	      }
+	    }
+	  },
+	  get: function() {
+	    return this.routes;
+	  }
+	};
+	
+	function generate(routes) {
+	  var routeMap = new Helper();
+	  routes.forEach(function(rule) {
+	    routeMap.add(rule.routePath, rule.controllerPath);
+	  });
+	  return routeMap.get();
+	}
+	
+	module.exports = generate;
+
 
 /***/ }
 /******/ ]);

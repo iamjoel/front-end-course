@@ -6,7 +6,9 @@ module.exports = {
   },
   output: {
     'path': 'assets/js',
-    filename: '[name].js'
+    filename: '[name].js',
+    trunkFilename: '[name].bundle.js',
+    publicPath: '/assets/js/'// 用异步加载模块一定要加这个
   },
   module: {
       loaders: [

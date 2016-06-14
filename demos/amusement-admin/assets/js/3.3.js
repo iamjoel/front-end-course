@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp([3],{
 
 /***/ 10:
 /*!********************************!*\
@@ -40,12 +40,11 @@ webpackJsonp([1],{
 	
 	RouteHelper.prototype = {
 	  add: function(routePath, compontPath) {
-	    // compontPath = compontPath || routePath.replace(/^\//, '') + '/index';
+	    compontPath = compontPath || '../component/' + routePath.replace(/^\//, '') + '/index';
 	    this.routes[routePath] = {
 	      component: function(resolve) {
 	        __webpack_require__.e/* nsure */(2, function(require) {
-	          // 必须这么些，如果没有字符串那前缀，会加载不到
-	          resolve(__webpack_require__(/*! ../../component */ 14)("./" + compontPath + '/index'));
+	          resolve(__webpack_require__(/*! . */ 12)(compontPath));
 	        });
 	      }
 	    }
@@ -61,4 +60,4 @@ webpackJsonp([1],{
 /***/ }
 
 });
-//# sourceMappingURL=1.1.js.map
+//# sourceMappingURL=3.3.js.map
