@@ -59,5 +59,5 @@
     password: '1'
   }];
 
-  localStorage.setItem('user', JSON.stringify(user));
+  localStorage.setItem('userlist', JSON.stringify(user));
 })();

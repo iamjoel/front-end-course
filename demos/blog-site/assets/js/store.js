@@ -16,6 +16,7 @@
   };
 
   gloable.blogListStore = generateStore('bloglist', []);
-  gloable.userStore = generateStore('user', []);
+  gloable.userStore = generateStore('userlist', []);
+  gloable.currUserStore = generateStore('user', []);
 
 })(window);
