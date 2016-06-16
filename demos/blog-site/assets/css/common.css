@@ -1,25 +1,33 @@
-*{
+* {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-body{
+
+body {
   margin: 0;
+  font-size: 14px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-input[type=text]{
+input[type=text] {
   height: 26px;
   padding: 0 5px;
 }
 
-.container{
+.container {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-  max-width: 100%;
 }
 
+@media (max-width:1000px) {
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
