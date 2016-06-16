@@ -1,0 +1,21 @@
+.pager{
+  font-size: 0;
+  text-align: center;
+}
+.pager__btn-prev,
+.pager__btn-item,
+.pager__btn-next{
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  color: blue;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+}
+
+.pager__btn--disabled{
+  cursor: default;
+  color: #ddd;
+}
