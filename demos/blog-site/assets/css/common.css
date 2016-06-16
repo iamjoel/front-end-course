@@ -18,6 +18,10 @@ input[type=text] {
   padding: 0 5px;
 }
 
+input[type=text],textarea{
+  border: 1px solid #ddd;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;

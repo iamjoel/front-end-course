@@ -45,15 +45,19 @@
   }];
 
 
-  var blogDetails = [{
-    id: 1,
-    author: '李苏特',
-    time: '2016/6/25',
-    name: '无限加载的实现',
-    detail: 'aaa'
-  }, ]
-
 
   localStorage.clear();
   localStorage.setItem('bloglist', JSON.stringify(bloglistData));
+
+  var user = [{
+    id: 1,
+    name: 'Joel',
+    password: '1'
+  }, {
+    id: 2,
+    name: 'a',
+    password: '1'
+  }];
+
+  localStorage.setItem('user', JSON.stringify(user));
 })();

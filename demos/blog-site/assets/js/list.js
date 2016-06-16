@@ -1,10 +1,10 @@
-(function($, generateStore) {
+(function($, blogListStore, pager) {
   // 宽度小于 768 认为是移动设备
   var isMobile = document.documentElement.getBoundingClientRect().width < 768;
   $(document).ready(function() {
     var list = {
       init: function() {
-        this.store = generateStore('bloglist');
+        this.store = blogListStore;
         // 是移动设备的话，不显示分页
         if (!isMobile) {
           this.pager = new Pager({
@@ -172,4 +172,4 @@
 
     list.init();
   });
-})(jQuery, generateStore, Pager);
+})(jQuery, blogListStore, Pager);

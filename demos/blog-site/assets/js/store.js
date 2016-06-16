@@ -3,7 +3,7 @@
   'use strict';
 
 
-  gloable.generateStore = function(storeKey, defaultVal) {
+  function generateStore(storeKey, defaultVal) {
     defaultVal = defaultVal || {};
     return {
       get: function() {
@@ -14,5 +14,8 @@
       }
     }
   };
+
+  gloable.blogListStore = generateStore('bloglist', []);
+  gloable.userStore = generateStore('user', []);
 
 })(window);
