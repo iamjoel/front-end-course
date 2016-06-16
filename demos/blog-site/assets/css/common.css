@@ -1,0 +1,24 @@
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+input[type=text]{
+  height: 26px;
+  padding: 0 5px;
+}
+
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+

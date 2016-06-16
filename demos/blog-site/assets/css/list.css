@@ -1,0 +1,21 @@
+.search{
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search__sort-condition{
+  margin: 10px 0;
+}
+
+.blog-list__item{
+  display: block;
+  line-height: 1.5;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed;
+  color: #333;
+}
+.blog-list__item:last-child{
+  border: none;
+}

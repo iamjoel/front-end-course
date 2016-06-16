@@ -3,7 +3,8 @@
     sortConditon: {},
     filterCondition: {},
     render: $.noop,
-    fetchRenderData: $.noop
+    fetchRenderData: $.noop,
+    ctx: null
   };
   var DataList = function (params) {
     $.extend(this, defaultParams, params);
@@ -19,8 +20,8 @@
       isRefresh && this.refresh();
     },
     refresh: function () {
-      var data = this.fetchRenderData(this.sortConditon, this.filterCondition);
-      this.render(data);
+      var data = this.fetchRenderData.call(this.ctx, this.sortConditon, this.filterCondition);
+      this.render.call(this.ctx, data);
     }
   }
 

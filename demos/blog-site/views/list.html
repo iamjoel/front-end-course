@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>博客列表</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/list.css">
+  <link rel="stylesheet" href="../assets/components/page/page.css">
 </head>
+
 <body>
-  
+  <div class="container">
+    <div class="search">
+      <div class="search__filter-condition">
+        <label>名称：
+          <input type="text" class="search__name js-search-name">
+        </label>
+      </div>
+      <div class="search__sort-condition">
+        排序:
+        <button class="search__sort-time-btn js-sort-time-btn" type="button" data-type="desc">按时间（降序）</button>
+      </div>
+      <button class="search__search-btn js-search-btn" type="button">搜索</button>
+    </div>
+    <div class="blog-list">
+      <div class="blog-list__list">
+      </div>
+      <div class="pager">
+        
+        <a href="javascript:void(0);" class="pager__btn-item">1</a>
+        <a href="javascript:void(0);" class="pager__btn-item pager__btn--disabled">2</a>
+        <a href="javascript:void(0);" class="pager__btn-item">3</a>
+        <a href="javascript:void(0);" class="pager__btn-next">下一页</a>
+      </div>
+    </div>
+    <script class="blog-item-template" type="text/x-template">
+      <a href="###" class="blog-list__item">
+        <div class="blog-list__item-info"><span class="blog-list__item-author">{author}</span>·<span class="log-list__item-time">{time}</span></div>
+        <div class="blog-list__name">{name}</div>
+      </a>
+    </script>
+    <script src="../assets/vendor/jquery.min.js"></script>
+    <script src="../assets/components/d
+atalist.js"></script>
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/components/page/page.js"></script>
+    <script src="../assets/js/make-test-data.js"></script>
+    <script src="../assets/js/list.js"></script>
 </body>
+
 </html>
