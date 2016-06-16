@@ -1,0 +1,36 @@
+.blog-detail__label{
+  display: block;
+  margin-top: 10px;
+  font-size: 0;
+}
+
+.blog-detail__label-text{
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.blog-detail__name-input,
+.blog-detail__content-input{
+  vertical-align: top;
+  display: inline-block;
+  width: 500px;
+  font-size: 12px;
+}
+.blog-detail__content-input{
+  height: 100px;
+}
+
+@media (max-width:768px){
+  .blog-detail__name-input,
+  .blog-detail__content-input{
+    display: block;
+    width: 100%;
+  }
+}
+
+.blog-detail__save-btn{
+  display: block;
+  width: 50px;
+  margin: 20px auto;
+}
