@@ -1,18 +1,19 @@
-(function($, generateStore, DataList) {
+(function($, generateStore) {
+  // 宽度小于 768 认为是移动设备
+  var isMobile = document.documentElement.getBoundingClientRect().width < 768;
   $(document).ready(function() {
     var list = {
       init: function() {
         this.store = generateStore('bloglist');
-        this.datalist = new DataList({
-          render: this.render,
-          fetchRenderData: this.fetchRenderData,
-          ctx: this
-        });
-        this.pager = new Pager({
-          limit: this.PAGE_LIMIT,
-          render: this.renderPage,
-          ctx: this
-        });
+        // 是移动设备的话，不显示分页
+        if (!isMobile) {
+          this.pager = new Pager({
+            limit: this.PAGE_LIMIT,
+            render: this.renderPage,
+            ctx: this
+          });
+        }
+
         this.registerEvent();
         this.search();
 
@@ -20,7 +21,7 @@
       PAGE_LIMIT: 3,
       registerEvent: function() {
         $('.js-search-btn').click(function() {
-          this.pager.setPageAt(1);
+          this.pager && this.pager.setPageAt(1);
           this.search();
         }.bind(this));
 
@@ -33,7 +34,7 @@
           }
           $sortTimeBtn.attr('data-type', sortType === 'desc' ? 'aese' : 'desc');
           $sortTimeBtn.text(sortType === 'desc' ? '按时间（降序）' : '按时间（升序）');
-          this.pager.setPageAt(1);
+          this.pager && this.pager.setPageAt(1);
           this.search();
         }.bind(this));
 
@@ -54,28 +55,31 @@
       $listWrap: $('.blog-list__list'),
       itemTemplate: $('.blog-item-template').html(),
       render: function(data) {
-        // 分页
-        this.pager.setTotalNum(data.length);
-        this.pager.refresh();
+        if (this.pager) {
+          // 分页
+          this.pager.setTotalNum(data.totalNum);
+          this.pager.refresh();
+        }
 
-        var startIndex = (this.pager.pageAt - 1) * this.PAGE_LIMIT;
-        var renderData = data.slice(startIndex, startIndex + this.PAGE_LIMIT);
-        // debugger;
-        var itemTemplate = this.itemTemplate;
-        var html = renderData.map(function(item) {
-          return itemTemplate
-            .replace('{author}', item.author)
-            .replace('{time}', item.time)
-            .replace('{name}', item.name);
-        }).join('');
+
+        if (data.totalNum > 0) {
+          var itemTemplate = this.itemTemplate;
+          var html = data.listData.map(function(item) {
+            return itemTemplate
+              .replace('{author}', item.author)
+              .replace('{time}', item.time)
+              .replace('{name}', item.name);
+          }).join('');
+        } else {
+          html = '没有数据可以展示';
+        }
+
         list.$listWrap.html(html);
 
       },
       search: function() {
-        var datalist = this.datalist;
-        datalist.setSortCondition(this.getSortCondition());
-        datalist.setFilterCondition(this.getFilterConditon());
-        datalist.refresh();
+        var renderData = this.getRenderData();
+        this.render(renderData);
       },
       getSortCondition: function() {
         return this.sortConditon;
@@ -91,11 +95,49 @@
         }
         return conditon;
       },
-      fetchRenderData: function(sortConditon, filterCondition) {
+      getRenderData: function() {
         var allData = this.store.get();
-        var filteredData = dataHelper.filterData(allData, filterCondition);
-        var sortedData = dataHelper.sortData(filteredData, sortConditon);
-        return sortedData;
+        var filterCondition = this.getFilterConditon();
+        var filteredData = allData;
+        filterCondition.forEach(function(eachCondition) {
+          filteredData = filteredData.filter(function(item) {
+            return item[eachCondition.key].indexOf(eachCondition.value) > -1;
+          });
+        });
+
+        if (filteredData.length === 0) {
+          return {
+            totalNum: 0,
+            listData: []
+          };
+        }
+
+        var totalNum = filteredData.length;
+        var sortConditon = this.getSortCondition();
+        var sortedData = filteredData;
+        if (sortConditon) {
+          if (sortConditon.value === 'desc') {
+            sortedData.sort(function(a, b) {
+              return new Date(a[sortConditon.key]).getTime() > new Date(b[sortConditon.key]).getTime();
+            });
+          } else {
+            sortedData.sort(function(a, b) {
+              return new Date(a[sortConditon.key]).getTime() < new Date(b[sortConditon.key]).getTime();
+            });
+          }
+        }
+
+
+        var listData = sortedData;
+        if (this.pager) {
+          var startIndex = (this.pager.pageAt - 1) * this.PAGE_LIMIT;
+          listData = listData.slice(startIndex, startIndex + this.PAGE_LIMIT);
+        }
+
+        return {
+          totalNum: totalNum,
+          listData: listData
+        };
       },
       $pager: $('.pager'),
       renderPage: function(info) {
@@ -126,58 +168,8 @@
       }
     };
 
-    var dataHelper = {
-      // condition: {key: ,value: 'desc'|| 'aesc'}
-      sortData: function(data, conditon) {
-        if (!$.isArray(data)) {
-          throw 'data should be array';
-        }
-        if (!conditon || !conditon.key) {
-          return data;
-        }
 
-        var cloneData = this.cloneArray(data);
-        // 目前时间搜索
-        if (conditon.value === 'desc') {
-          cloneData.sort(function(a, b) {
-            return new Date(a[conditon.key]).getTime() > new Date(b[conditon.key]).getTime();
-          });
-        } else {
-          cloneData.sort(function(a, b) {
-            return new Date(a[conditon.key]).getTime() < new Date(b[conditon.key]).getTime();
-          });
-        }
-        return cloneData;
-
-      },
-      filterData: function(data, conditon) {
-        if (!$.isArray(data)) {
-          throw 'data should be array';
-        }
-
-        if (typeof conditon !== 'object') {
-          return data;
-        }
-
-        if (!$.isArray(conditon)) {
-          conditon = [conditon];
-        }
-
-        var res = this.cloneArray(data);
-        conditon.forEach(function(eachCondition) {
-          res = res.filter(function(item) {
-            return item[eachCondition.key].indexOf(eachCondition.value) > -1;
-          });
-        });
-        return res;
-      },
-      cloneArray: function(array) {
-        return array.map(function(item) {
-          return item;
-        });
-      }
-    };
 
     list.init();
   });
-})(jQuery, generateStore, DataList, Pager);
+})(jQuery, generateStore, Pager);
