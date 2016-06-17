@@ -101,14 +101,19 @@
 	var Vue = __webpack_require__(/*! vue */ 1);
 	var VueRouter = __webpack_require__(/*! vue-router */ 2);
 	
+	
 	// 路由
 	Vue.use(VueRouter);
 	var router = new VueRouter();
 	router.map(__webpack_require__(/*! ./routes */ 3));
 	
-	// 启动
-	router.start(__webpack_require__(/*! ../component/app/index */ 7), '#app');
+	router.beforeEach(function(transition) {
+	  // transition.to.path;// 当前路由
+	  transition.next()
+	});
 	
+	// 启动
+	router.start(__webpack_require__(/*! ../component/app/index */ 6), '#app');
 
 
 /***/ },
@@ -159,64 +164,14 @@
 	}];
 	
 	
-	// 将配置转化成
-	var routesMap = __webpack_require__(/*! ./helper/route-helper */ 11)(routes);
+	// 将配置转化成 vue-route 需要的个数
+	var routesMap = __webpack_require__(/*! ./helper/route-helper */ 4)(routes);
 	
 	module.exports = routesMap;
 
 
 /***/ },
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
-/*!***************************************!*\
-  !*** ./assets/component/app/index.js ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var Vue = __webpack_require__(/*! vue */ 1);
-	module.exports = Vue.extend({
-	  template: __webpack_require__(/*! ./index.html */ 8),
-	  data: function() {
-	    return {
-	      menu: __webpack_require__(/*! setting */ 9).menu
-	    }
-	  }
-	});
-
-/***/ },
-/* 8 */
-/*!*****************************************!*\
-  !*** ./assets/component/app/index.html ***!
-  \*****************************************/
-/***/ function(module, exports) {
-
-	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"nav in menu\">\r\n        <li v-link=\"{ path: nav.path,activeClass:'active' }\"><a href=\"javascript:void(0);\">{{nav.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <router-view></router-view>\r\n</div>\r\n";
-
-/***/ },
-/* 9 */
-/*!********************!*\
-  !*** ./setting.js ***!
-  \********************/
-/***/ function(module, exports) {
-
-	var settings = {
-	  menu: [{
-	    name: '音乐',
-	    path: '/music'
-	  }, {
-	    name: '电影',
-	    path: '/film'
-	  }]
-	};
-	
-	module.exports = settings;
-
-
-/***/ },
-/* 10 */,
-/* 11 */
+/* 4 */
 /*!**********************************************!*\
   !*** ./assets/js-src/helper/route-helper.js ***!
   \**********************************************/
@@ -230,16 +185,17 @@
 	  add: function(routePath, compontPath) {
 	    this.routes[routePath] = {
 	      component: function(resolve) {
-	        __webpack_require__.e/* nsure */(2, function(require) {
+	        __webpack_require__.e/* nsure */(1, function(require) {
 	
 	          /*
 	           * 必须这么些，如果没有字符串那前缀，会加载不到。
-	           * 字符串不能是变量。如果不加js，则如果
+	           * 字符串不能是变量。
+	           * 如果不加js，则如果有 其他文件如 index.html 就不知道加载哪个了
 	           */
 	          // routePath:'/music/xxx' => compontPath: /music/index/
 	          compontPath = compontPath || routePath.match(/^\/?([^/]*)/)[1] + '/index';
 	          compontPath = compontPath.replace(/\.js$/, '');
-	          resolve(__webpack_require__(/*! ../../component */ 16)("./" + compontPath + '.js'));
+	          resolve(__webpack_require__(/*! ../../component */ 5)("./" + compontPath + '.js'));
 	        });
 	      }
 	    }
@@ -259,6 +215,126 @@
 	
 	module.exports = generate;
 
+
+/***/ },
+/* 5 */,
+/* 6 */
+/*!***************************************!*\
+  !*** ./assets/component/app/index.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var Vue = __webpack_require__(/*! vue */ 1);
+	
+	module.exports = Vue.extend({
+	  template: __webpack_require__(/*! ./index.html */ 7),
+	  data: function() {
+	    return {
+	      subMenus: '',
+	      menu: __webpack_require__(/*! setting */ 8).menu
+	    }
+	  },
+	  components: {
+	    'sub-menu': __webpack_require__(/*! ../sub-menu/index.js */ 12)
+	  }
+	});
+
+
+/***/ },
+/* 7 */
+/*!*****************************************!*\
+  !*** ./assets/component/app/index.html ***!
+  \*****************************************/
+/***/ function(module, exports) {
+
+	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"nav in menu\">\r\n        <li v-link=\"{ path: nav.path,activeClass:'active' }\"><a href=\"javascript:void(0);\">{{nav.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-2 sub-menu-wrap\">\r\n      <sub-menu></sub-menu>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n      <router-view></router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+
+/***/ },
+/* 8 */
+/*!********************!*\
+  !*** ./setting.js ***!
+  \********************/
+/***/ function(module, exports) {
+
+	var settings = {
+	  menu: [{
+	    name: '音乐',
+	    path: '/music',
+	    sub: [{
+	      name: '歌曲',
+	      path: '/songs'
+	    },{
+	      name: '歌手',
+	      path: '/people'
+	    }]
+	  }, {
+	    name: '电影',
+	    path: '/film',
+	    sub: [{
+	      name: '电影',
+	      path: '/film'
+	    },{
+	      name: '演员',
+	      path: '/people'
+	    }]
+	  }]
+	};
+	
+	module.exports = settings;
+
+
+/***/ },
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */
+/*!********************************************!*\
+  !*** ./assets/component/sub-menu/index.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var Vue = __webpack_require__(/*! vue */ 1);
+	var menu = __webpack_require__(/*! setting */ 8).menu;
+	
+	var SubMenu = Vue.extend({
+	  template: __webpack_require__(/*! ./index.html */ 13),
+	  created: function() {
+	    var self = this;
+	    // 感觉这种方式不太好~~~
+	    window.addEventListener('hashchange', function() {
+	      self.subMenu = getSubMenu(menu);
+	    })
+	  },
+	  data: function() {
+	    return {
+	      subMenu: getSubMenu(menu)
+	    };
+	  }
+	});
+	
+	function getSubMenu(menuData) {
+	  // TODO 从路由中解析出 一级模块，二级模块
+	  var currPath = location.hash.replace(/^#!/, '');
+	  var subMenu = menuData.filter(function(item) {
+	    return item.path === currPath;
+	  });
+	  if (subMenu && subMenu[0]) {
+	    subMenu = subMenu[0].sub;
+	  }
+	  return subMenu;
+	}
+	
+	module.exports = SubMenu;
+
+
+/***/ },
+/* 13 */
+/*!**********************************************!*\
+  !*** ./assets/component/sub-menu/index.html ***!
+  \**********************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<ul>\r\n  <li v-for=\"item in subMenu\"><a href=\"{{item.path}}\">{{item.name}}</a></li>\r\n</ul>";
 
 /***/ }
 /******/ ]);

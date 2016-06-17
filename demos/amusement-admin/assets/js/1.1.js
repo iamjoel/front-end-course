@@ -1,16 +1,20 @@
-webpackJsonp([1],{
-
-/***/ 10:
-/*!********************************!*\
-  !*** ./assets/js-src ^\.\/.*$ ***!
-  \********************************/
+webpackJsonp([1],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
+/*!***************************************!*\
+  !*** ./assets/component ^\.\/.*\.js$ ***!
+  \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./helper/route-helper": 11,
-		"./helper/route-helper.js": 11,
-		"./routes": 3,
-		"./routes.js": 3
+		"./app/index.js": 6,
+		"./film/index.js": 9,
+		"./music/index.js": 10,
+		"./sub-menu/index.js": 12
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -23,42 +27,56 @@ webpackJsonp([1],{
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 10;
+	webpackContext.id = 5;
 
 
 /***/ },
-
-/***/ 11:
-/*!**********************************************!*\
-  !*** ./assets/js-src/helper/route-helper.js ***!
-  \**********************************************/
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
+/*!****************************************!*\
+  !*** ./assets/component/film/index.js ***!
+  \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	function RouteHelper() {
-	  this.routes = {};
-	}
+	var Vue = __webpack_require__(/*! vue */ 1);
 	
-	RouteHelper.prototype = {
-	  add: function(routePath, compontPath) {
-	    // compontPath = compontPath || routePath.replace(/^\//, '') + '/index';
-	    this.routes[routePath] = {
-	      component: function(resolve) {
-	        __webpack_require__.e/* nsure */(2, function(require) {
-	          // 必须这么些，如果没有字符串那前缀，会加载不到
-	          resolve(__webpack_require__(/*! ../../component */ 14)("./" + compontPath + '/index'));
-	        });
-	      }
-	    }
-	  },
-	  get: function () {
-	    return this.routes;
-	  }
-	}
-	
-	module.exports = RouteHelper;
+	var Music = Vue.extend({
+	  template: 'Film'
+	});
+	module.exports  = Music;
 
+
+/***/ },
+/* 10 */
+/*!*****************************************!*\
+  !*** ./assets/component/music/index.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var Vue = __webpack_require__(/*! vue */ 1);
+	
+	var Music = Vue.extend({
+	  template: __webpack_require__(/*! ./index.html */ 11),
+	  // route: {
+	  //   data (transition) {
+	  //     console.info(transition.to.path)
+	  //   }
+	  // },
+	});
+	module.exports  = Music;
+
+
+/***/ },
+/* 11 */
+/*!*******************************************!*\
+  !*** ./assets/component/music/index.html ***!
+  \*******************************************/
+/***/ function(module, exports) {
+
+	module.exports = "Muisc Page!";
 
 /***/ }
-
-});
+]);
 //# sourceMappingURL=1.1.js.map
