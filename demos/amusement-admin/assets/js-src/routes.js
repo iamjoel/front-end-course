@@ -1,9 +1,19 @@
 // 路由配置
 var routes = [
 {
-  'routePath': '/music'
-},{
-  'routePath': '/film',
+  'routePath': '/music/songs',
+  'controllerPath': 'music/song/list'
+},
+{
+  'routePath': '/music/people',
+  'controllerPath': 'music/song/list'
+},
+{
+  'routePath': '/film/film',
+  'controllerPath': 'film/index'
+},
+{
+  'routePath': '/film/people',
   'controllerPath': 'film/index'
 }];
 

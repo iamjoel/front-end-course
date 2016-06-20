@@ -1,4 +1,3 @@
-
 <ul>
-  <li v-for="item in subMenu"><a href="{{item.path}}">{{item.name}}</a></li>
+  <li v-for="item in subModules"><a v-link="{ path: item.fullPath,activeClass:'active'}">{{item.name}} {{item.fullPath}}</a></li>
 </ul>

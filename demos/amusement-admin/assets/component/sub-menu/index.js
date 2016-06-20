@@ -1,32 +1,30 @@
 var Vue = require('vue');
-var menu = require('setting').menu;
+var modules = require('setting').modules;
 
 var SubMenu = Vue.extend({
   template: require('./index.html'),
-  created: function() {
-    var self = this;
-    // 感觉这种方式不太好~~~
-    window.addEventListener('hashchange', function() {
-      self.subMenu = getSubMenu(menu);
-    })
-  },
-  data: function() {
-    return {
-      subMenu: getSubMenu(menu)
-    };
+  props: ['pageRoute'],
+  computed: {
+    subModules: function() {
+      var pageRoute = this.pageRoute;
+      if (!pageRoute) {
+        return;
+      }
+      // pageRoute 类似: module/subModule/params
+      var moudleInfo = /\/?(\w+)\/(\w+)/.exec(pageRoute);
+      var modulePrefix = moudleInfo[1];
+      var subModuleRoute = moudleInfo[2];
+      var subModule = modules.filter(function(item) {
+        return item.modulePrefix === modulePrefix;
+      })[0].sub;
+      return subModule.map(function(item) {
+        item.fullPath = '/' + modulePrefix + item.path;
+        return item;
+      });
+    }
   }
 });
 
-function getSubMenu(menuData) {
-  // TODO 从路由中解析出 一级模块，二级模块
-  var currPath = location.hash.replace(/^#!/, '');
-  var subMenu = menuData.filter(function(item) {
-    return item.path === currPath;
-  });
-  if (subMenu && subMenu[0]) {
-    subMenu = subMenu[0].sub;
-  }
-  return subMenu;
-}
+
 
 module.exports = SubMenu;

@@ -12,9 +12,9 @@ webpackJsonp([1],[
 
 	var map = {
 		"./app/index.js": 6,
-		"./film/index.js": 9,
-		"./music/index.js": 10,
-		"./sub-menu/index.js": 12
+		"./film/index.js": 13,
+		"./music/song/list.js": 16,
+		"./sub-menu/index.js": 9
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -34,48 +34,82 @@ webpackJsonp([1],[
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
 /*!****************************************!*\
   !*** ./assets/component/film/index.js ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(/*! vue */ 1);
+	var RouteComponent = __webpack_require__(/*! route-component */ 14);
 	
-	var Music = Vue.extend({
-	  template: 'Film'
+	var Main = RouteComponent.extend({
+	  template: __webpack_require__(/*! ./index.html */ 15),
 	});
-	module.exports  = Music;
-
+	module.exports  = Main;
 
 /***/ },
-/* 10 */
-/*!*****************************************!*\
-  !*** ./assets/component/music/index.js ***!
-  \*****************************************/
+/* 14 */
+/*!*************************************************!*\
+  !*** ./assets/js-src/helper/route-component.js ***!
+  \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var Vue = __webpack_require__(/*! vue */ 1);
 	
-	var Music = Vue.extend({
-	  template: __webpack_require__(/*! ./index.html */ 11),
-	  // route: {
-	  //   data (transition) {
-	  //     console.info(transition.to.path)
-	  //   }
-	  // },
+	var RouteComponent = Vue.extend({
+	  route: {
+	    data (transition) {
+	      // 页面切换时会执行
+	      this.updatePageRoute(transition.to.path);
+	    }
+	  },
+	  vuex: {
+	    actions: {
+	      updatePageRoute: function(store, route){
+	        store.dispatch('updatePageRoute', route);
+	        console.info('dispatch:updatePageRoute, route: ' + route);
+	      }
+	    }
+	  }
 	});
-	module.exports  = Music;
+	module.exports  = RouteComponent;
+
+/***/ },
+/* 15 */
+/*!******************************************!*\
+  !*** ./assets/component/film/index.html ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	module.exports = "Film Page!";
+
+/***/ },
+/* 16 */
+/*!*********************************************!*\
+  !*** ./assets/component/music/song/list.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var RouteComponent = __webpack_require__(/*! route-component */ 14);
+	
+	var Main = RouteComponent.extend({
+	  template: __webpack_require__(/*! ./index.html */ 17),
+	});
+	module.exports  = Main;
 
 
 /***/ },
-/* 11 */
-/*!*******************************************!*\
-  !*** ./assets/component/music/index.html ***!
-  \*******************************************/
+/* 17 */
+/*!************************************************!*\
+  !*** ./assets/component/music/song/index.html ***!
+  \************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "Muisc Page!";
+	module.exports = "Music Page!";
 
 /***/ }
 ]);

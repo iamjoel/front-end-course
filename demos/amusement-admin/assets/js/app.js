@@ -157,9 +157,19 @@
 	// 路由配置
 	var routes = [
 	{
-	  'routePath': '/music'
-	},{
-	  'routePath': '/film',
+	  'routePath': '/music/songs',
+	  'controllerPath': 'music/song/list'
+	},
+	{
+	  'routePath': '/music/people',
+	  'controllerPath': 'music/song/list'
+	},
+	{
+	  'routePath': '/film/film',
+	  'controllerPath': 'film/index'
+	},
+	{
+	  'routePath': '/film/people',
 	  'controllerPath': 'film/index'
 	}];
 	
@@ -230,12 +240,28 @@
 	  template: __webpack_require__(/*! ./index.html */ 7),
 	  data: function() {
 	    return {
-	      subMenus: '',
-	      menu: __webpack_require__(/*! setting */ 8).menu
+	      modules: __webpack_require__(/*! setting */ 8).modules
+	    }
+	  },
+	  methods: {
+	    getPath: function (module) {
+	      var defalutSubModule = module.sub.filter(function (subModule) {
+	        return module.default === subModule.id;
+	      })[0];
+	
+	      return '/' + module.modulePrefix + defalutSubModule.path;
 	    }
 	  },
 	  components: {
-	    'sub-menu': __webpack_require__(/*! ../sub-menu/index.js */ 12)
+	    'sub-menu': __webpack_require__(/*! ../sub-menu/index.js */ 9)
+	  },
+	  store: __webpack_require__(/*! store */ 11),
+	  vuex: {
+	    getters: {
+	      pageRoute: function(state){
+	        return state.pageRoute;
+	      }
+	    }
 	  }
 	});
 
@@ -247,7 +273,7 @@
   \*****************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"nav in menu\">\r\n        <li v-link=\"{ path: nav.path,activeClass:'active' }\"><a href=\"javascript:void(0);\">{{nav.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-2 sub-menu-wrap\">\r\n      <sub-menu></sub-menu>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n      <router-view></router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航{{a}}</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\" v-for=\"module in modules\">\r\n        <li v-link=\"{ path: getPath(module)}\" :class=\"{active:pageRoute.indexOf(module.modulePrefix) === 1}\" ><a href=\"javascript:void(0);\">{{module.name}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-2 sub-menu-wrap\">\r\n      <!-- 左侧的二级菜单 -->\r\n      <sub-menu :page-route=\"pageRoute\"></sub-menu>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n      <router-view></router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 8 */
@@ -257,23 +283,29 @@
 /***/ function(module, exports) {
 
 	var settings = {
-	  menu: [{
+	  modules: [{
 	    name: '音乐',
-	    path: '/music',
+	    modulePrefix: 'music',// 模块的路由前缀
+	    default: 1,// 模块的默认首页
 	    sub: [{
+	      id: 1,
 	      name: '歌曲',
 	      path: '/songs'
 	    },{
+	      id: 2,
 	      name: '歌手',
 	      path: '/people'
 	    }]
 	  }, {
 	    name: '电影',
-	    path: '/film',
+	    modulePrefix: 'film',
+	    default: 1,
 	    sub: [{
+	      id: 1,
 	      name: '电影',
 	      path: '/film'
 	    },{
+	      id: 2,
 	      name: '演员',
 	      path: '/people'
 	    }]
@@ -284,57 +316,94 @@
 
 
 /***/ },
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/* 9 */
 /*!********************************************!*\
   !*** ./assets/component/sub-menu/index.js ***!
   \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var Vue = __webpack_require__(/*! vue */ 1);
-	var menu = __webpack_require__(/*! setting */ 8).menu;
+	var modules = __webpack_require__(/*! setting */ 8).modules;
 	
 	var SubMenu = Vue.extend({
-	  template: __webpack_require__(/*! ./index.html */ 13),
-	  created: function() {
-	    var self = this;
-	    // 感觉这种方式不太好~~~
-	    window.addEventListener('hashchange', function() {
-	      self.subMenu = getSubMenu(menu);
-	    })
-	  },
-	  data: function() {
-	    return {
-	      subMenu: getSubMenu(menu)
-	    };
+	  template: __webpack_require__(/*! ./index.html */ 10),
+	  props: ['pageRoute'],
+	  computed: {
+	    subModules: function() {
+	      var pageRoute = this.pageRoute;
+	      if (!pageRoute) {
+	        return;
+	      }
+	      // pageRoute 类似: module/subModule/params
+	      var moudleInfo = /\/?(\w+)\/(\w+)/.exec(pageRoute);
+	      var modulePrefix = moudleInfo[1];
+	      var subModuleRoute = moudleInfo[2];
+	      var subModule = modules.filter(function(item) {
+	        return item.modulePrefix === modulePrefix;
+	      })[0].sub;
+	      return subModule.map(function(item) {
+	        item.fullPath = '/' + modulePrefix + item.path;
+	        return item;
+	      });
+	    }
 	  }
 	});
 	
-	function getSubMenu(menuData) {
-	  // TODO 从路由中解析出 一级模块，二级模块
-	  var currPath = location.hash.replace(/^#!/, '');
-	  var subMenu = menuData.filter(function(item) {
-	    return item.path === currPath;
-	  });
-	  if (subMenu && subMenu[0]) {
-	    subMenu = subMenu[0].sub;
-	  }
-	  return subMenu;
-	}
+	
 	
 	module.exports = SubMenu;
 
 
 /***/ },
-/* 13 */
+/* 10 */
 /*!**********************************************!*\
   !*** ./assets/component/sub-menu/index.html ***!
   \**********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<ul>\r\n  <li v-for=\"item in subMenu\"><a href=\"{{item.path}}\">{{item.name}}</a></li>\r\n</ul>";
+	module.exports = "<ul>\r\n  <li v-for=\"item in subModules\"><a v-link=\"{ path: item.fullPath,activeClass:'active'}\">{{item.name}} {{item.fullPath}}</a></li>\r\n</ul>\r\n";
+
+/***/ },
+/* 11 */
+/*!***************************************!*\
+  !*** ./assets/js-src/helper/store.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var Vue = __webpack_require__(/*! vue */ 1);
+	var Vuex = __webpack_require__(/*! vuex */ 12);
+	
+	Vue.use(Vuex);
+	
+	var state = {
+	  pageRoute: ''
+	};
+	
+	var mutations = {
+	  updatePageRoute: function(state, pageRoute) {
+	    state.pageRoute = pageRoute;
+	  }
+	};
+	
+	module.exports = new Vuex.Store({
+	  state: state,
+	  mutations: mutations
+	});
+
+
+/***/ },
+/* 12 */
+/*!*********************************!*\
+  !*** ./~/vuex/dist/vuex.min.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * Vuex v0.6.3
+	 * (c) 2016 Evan You
+	 * Released under the MIT License.
+	 */
+	!function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define(e):t.Vuex=e()}(this,function(){"use strict";function t(t){return t.reduce(function(t,e){return Object.keys(e).forEach(function(n){var o=t[n];o?Array.isArray(o)?o.push(e[n]):t[n]=[t[n],e[n]]:t[n]=e[n]}),t},{})}function e(t){if(Array.isArray(t))return t.map(e);if(t&&"object"===("undefined"==typeof t?"undefined":s["typeof"](t))){for(var n={},o=Object.keys(t),i=0,r=o.length;r>i;i++){var a=o[i];n[a]=e(t[a])}return n}return t}function n(t){if(!u){var e=t.$watch("__vuex__",function(t){return t});u=t._watchers[0].constructor,e()}return u}function o(t){return c||(c=t._data.__ob__.dep.constructor),c}function i(t){function e(){var t=this.$options,e=t.store,n=t.vuex;if(e?this.$store=e:t.parent&&t.parent.$store&&(this.$store=t.parent.$store),n){this.$store||console.warn("[vuex] store not injected. make sure to provide the store option in your root component.");var o=n.state,i=n.getters,a=n.actions;if(o&&!i&&(console.warn("[vuex] vuex.state option will been deprecated in 1.0. Use vuex.getters instead."),i=o),i){t.computed=t.computed||{};for(var u in i)r(this,u,i[u])}if(a){t.methods=t.methods||{};for(var c in a)t.methods[c]=s(this.$store,a[c],c)}}}function i(){throw new Error("vuex getter properties are read-only.")}function r(t,e,n){"function"!=typeof n?console.warn("[vuex] Getter bound to key 'vuex.getters."+e+"' is not a function."):Object.defineProperty(t,e,{enumerable:!0,configurable:!0,get:a(t.$store,n),set:i})}function a(t,e){var i=t._getterCacheId;if(e[i])return e[i];var r=t._vm,a=n(r),s=o(r),u=new a(r,function(t){return e(t)},null,{lazy:!0}),c=function(){return u.dirty&&u.evaluate(),s.target&&u.depend(),u.value};return e[i]=c,c}function s(t,e,n){return"function"!=typeof e&&console.warn("[vuex] Action bound to key 'vuex.actions."+n+"' is not a function."),function(){for(var n=arguments.length,o=Array(n),i=0;n>i;i++)o[i]=arguments[i];return e.call.apply(e,[this,t].concat(o))}}var u=t.prototype._init;t.prototype._init=function(){var t=arguments.length<=0||void 0===arguments[0]?{}:arguments[0];t.init=t.init?[e].concat(t.init):e,u.call(this,t)};var c=t.config.optionMergeStrategies.computed;t.config.optionMergeStrategies.vuex=function(t,e){return t?e?{getters:c(t.getters,e.getters),state:c(t.state,e.state),actions:c(t.actions,e.actions)}:t:e}}function r(t){return h?void console.warn("[vuex] already installed. Vue.use(Vuex) should be called only once."):(h=t,void i(h))}function a(){console.warn("[vuex] Vuex.createLogger has been deprecated.Use `import createLogger from 'vuex/logger' instead.")}var s={};s["typeof"]="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol?"symbol":typeof t},s.classCallCheck=function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")},s.createClass=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),s.toConsumableArray=function(t){if(Array.isArray(t)){for(var e=0,n=Array(t.length);e<t.length;e++)n[e]=t[e];return n}return Array.from(t)};var u=void 0,c=void 0,f="undefined"!=typeof window&&window.__VUE_DEVTOOLS_GLOBAL_HOOK__,d={onInit:function(t,e){f&&(f.emit("vuex:init",e),f.on("vuex:travel-to-state",function(t){var n=e._vm._data;e._dispatching=!0,Object.keys(t).forEach(function(e){n[e]=t[e]}),e._dispatching=!1}))},onMutation:function(t,e){f&&f.emit("vuex:mutation",t,e)}},h=void 0,l=0,p=function(){function o(){var t=this,e=arguments.length<=0||void 0===arguments[0]?{}:arguments[0],n=e.state,i=void 0===n?{}:n,r=e.mutations,a=void 0===r?{}:r,u=e.modules,c=void 0===u?{}:u,f=e.middlewares,d=void 0===f?[]:f,p=e.strict,v=void 0===p?!1:p;s.classCallCheck(this,o),this._getterCacheId="vuex_store_"+l++,this._dispatching=!1,this._rootMutations=this._mutations=a,this._modules=c;var y=this.dispatch;if(this.dispatch=function(){for(var e=arguments.length,n=Array(e),o=0;e>o;o++)n[o]=arguments[o];y.apply(t,n)},!h)throw new Error("[vuex] must call Vue.use(Vuex) before creating a store instance.");var _=h.config.silent;h.config.silent=!0,this._vm=new h({data:i}),h.config.silent=_,this._setupModuleState(i,c),this._setupModuleMutations(c),this._setupMiddlewares(d,i),v&&this._setupMutationCheck()}return s.createClass(o,[{key:"dispatch",value:function(t){for(var e=arguments.length,n=Array(e>1?e-1:0),o=1;e>o;o++)n[o-1]=arguments[o];var i=!1;"object"===("undefined"==typeof t?"undefined":s["typeof"](t))&&t.type&&1===arguments.length&&(n=[t.payload],t.silent&&(i=!0),t=t.type);var r=this._mutations[t],a=this.state;r?(this._dispatching=!0,Array.isArray(r)?r.forEach(function(t){return t.apply(void 0,[a].concat(s.toConsumableArray(n)))}):r.apply(void 0,[a].concat(s.toConsumableArray(n))),this._dispatching=!1,i||this._applyMiddlewares(t,n)):console.warn("[vuex] Unknown mutation: "+t)}},{key:"watch",value:function(t,e,n){var o=this;return this._vm.$watch(function(){return"function"==typeof t?t(o.state):o._vm.$get(t)},e,n)}},{key:"hotUpdate",value:function(){var t=arguments.length<=0||void 0===arguments[0]?{}:arguments[0],e=t.mutations,n=t.modules;this._rootMutations=this._mutations=e||this._rootMutations,this._setupModuleMutations(n||this._modules)}},{key:"_setupModuleState",value:function(t,e){Object.keys(e).forEach(function(n){h.set(t,n,e[n].state||{})})}},{key:"_setupModuleMutations",value:function(e){var n=this._modules,o=[this._rootMutations];Object.keys(e).forEach(function(t){n[t]=e[t]}),Object.keys(n).forEach(function(t){var e=n[t];if(e&&e.mutations){var i={};Object.keys(e.mutations).forEach(function(n){var o=e.mutations[n];i[n]=function(e){for(var n=arguments.length,i=Array(n>1?n-1:0),r=1;n>r;r++)i[r-1]=arguments[r];o.apply(void 0,[e[t]].concat(i))}}),o.push(i)}}),this._mutations=t(o)}},{key:"_setupMutationCheck",value:function(){var t=this,e=n(this._vm);new e(this._vm,"$data",function(){if(!t._dispatching)throw new Error("[vuex] Do not mutate vuex store state outside mutation handlers.")},{deep:!0,sync:!0})}},{key:"_setupMiddlewares",value:function(t,n){var o=this;this._middlewares=[d].concat(t),this._needSnapshots=t.some(function(t){return t.snapshot}),this._needSnapshots&&console.log("[vuex] One or more of your middlewares are taking state snapshots for each mutation. Make sure to use them only during development.");var i=this._prevSnapshot=this._needSnapshots?e(n):null;this._middlewares.forEach(function(t){t.onInit&&t.onInit(t.snapshot?i:n,o)})}},{key:"_applyMiddlewares",value:function(t,n){var o=this,i=this.state,r=this._prevSnapshot,a=void 0,s=void 0;this._needSnapshots&&(a=this._prevSnapshot=e(i),s=e(n)),this._middlewares.forEach(function(e){e.onMutation&&(e.snapshot?e.onMutation({type:t,payload:s},a,r,o):e.onMutation({type:t,payload:n},i,o))})}},{key:"state",get:function(){return this._vm._data},set:function(t){throw new Error("[vuex] Vuex root state is read only.")}}]),o}();"undefined"!=typeof window&&window.Vue&&r(window.Vue);var v={Store:p,install:r,createLogger:a};return v});
 
 /***/ }
 /******/ ]);
