@@ -1,6 +1,14 @@
 var RouteComponent = require('route-component');
 
 var Main = RouteComponent.extend({
-  template: require('./index.html'),
+  template: require('./list.html'),
+  data: {
+    list:[]
+  },
+  ready: function () {
+    this.$http.get('/assets/component/music/song/list-data.json').then(function (data) {
+      this.$set('list', data.data);
+    });
+  }
 });
 module.exports  = Main;

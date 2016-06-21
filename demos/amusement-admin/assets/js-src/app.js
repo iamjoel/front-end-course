@@ -1,9 +1,10 @@
 var Vue = require('vue');
 var VueRouter = require('vue-router');
+var VueResource = require('vue-resource');
 
+Vue.use(VueRouter);// 路由
+Vue.use(VueResource);// ajax这块
 
-// 路由
-Vue.use(VueRouter);
 var router = new VueRouter();
 router.map(require('./routes'));
 
