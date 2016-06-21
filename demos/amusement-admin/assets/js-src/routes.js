@@ -1,6 +1,10 @@
 // 路由配置
 var routes = [
 {
+  'routePath': '/',
+  'controllerPath': 'music/song/list'// 默认路由
+},
+{
   'routePath': '/music/songs',
   'controllerPath': 'music/song/list'
 },

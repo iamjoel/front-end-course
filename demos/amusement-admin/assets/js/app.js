@@ -105,16 +105,25 @@
 	Vue.use(VueRouter);// 路由
 	Vue.use(VueResource);// ajax这块
 	
-	var router = new VueRouter();
+	var router = new VueRouter({
+	  transitionOnLoad: true
+	});
 	router.map(__webpack_require__(/*! ./routes */ 4));
 	
 	router.beforeEach(function(transition) {
 	  // transition.to.path;// 当前路由
-	  transition.next()
+	  // show loading
+	  console.info('show loading');
+	  transition.next();
+	}).afterEach(function (transition) {
+	  console.info('hide loading');
 	});
+	
 	
 	// 启动
 	router.start(__webpack_require__(/*! ../component/app/index */ 7), '#app');
+	
+	
 
 
 /***/ },
@@ -172,6 +181,10 @@
 
 	// 路由配置
 	var routes = [
+	{
+	  'routePath': '/',
+	  'controllerPath': 'music/song/list'// 默认路由
+	},
 	{
 	  'routePath': '/music/songs',
 	  'controllerPath': 'music/song/list'
@@ -299,6 +312,7 @@
 /***/ function(module, exports) {
 
 	var settings = {
+	  defaultRoute: '/music/songs',
 	  modules: [{
 	    name: '音乐',
 	    modulePrefix: 'music',// 模块的路由前缀

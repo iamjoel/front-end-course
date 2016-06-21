@@ -1,4 +1,5 @@
 var settings = {
+  defaultRoute: '/music/songs',
   modules: [{
     name: '音乐',
     modulePrefix: 'music',// 模块的路由前缀

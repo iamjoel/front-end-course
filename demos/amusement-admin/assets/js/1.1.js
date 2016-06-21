@@ -98,7 +98,7 @@ webpackJsonp([1],[
 	var RouteComponent = __webpack_require__(/*! route-component */ 15);
 	
 	var Main = RouteComponent.extend({
-	  template: __webpack_require__(/*! ./list.html */ 19),
+	  template: __webpack_require__(/*! ./list.html */ 18),
 	  data: {
 	    list:[]
 	  },
@@ -112,8 +112,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 18 */,
-/* 19 */
+/* 18 */
 /*!***********************************************!*\
   !*** ./assets/component/music/song/list.html ***!
   \***********************************************/
