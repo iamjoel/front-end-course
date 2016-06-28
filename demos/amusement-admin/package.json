@@ -8,7 +8,9 @@
     "watch:scss-component": "sass --watch assets/component",
     "watch:js": "node_modules/.bin/webpack --watch -d",
     "start:server": "node_modules/.bin/anywhere 1521",
-    "develop": "node_modules/.bin/npm-run-all --parallel start:server watch:scss watch:scss-component watch:js"
+    "start:develop-server": "node_modules/.bin/webpack-dev-server --inline --hot",
+    "develop": "node_modules/.bin/npm-run-all --parallel watch:scss watch:scss-component start:develop-server",
+    "preview": "start:server"
   },
   "author": "Joel",
   "license": "MIT",
@@ -21,11 +23,12 @@
     "vue-resource": "0.8.0"
   },
   "devDependencies": {
-    "npm-run-all": "1.6.0",
-    "webpack": "1.12.14",
     "anywhere": "1.2.0",
     "html-loader": "0.4.3",
     "json-loader": "0.5.4",
-    "raw-loader": "0.5.1"
+    "npm-run-all": "1.6.0",
+    "raw-loader": "0.5.1",
+    "webpack": "1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }

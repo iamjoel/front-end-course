@@ -111,7 +111,7 @@ webpackJsonp([1],{
   \***********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<table class=\"table table-hover table-striped\">\r\n  <thead>\r\n    <tr>\r\n      <th>{{$root.lan('歌名')}}</th>\r\n      <th>{{$root.lan('歌手')}}</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr v-for=\"item in list\">\r\n      <td>{{item.name}}</td>\r\n      <td>{{item.singer}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n";
+	module.exports = "<table class=\"table table-hover table-striped\">\n  <thead>\n    <tr>\n      <th>{{$root.lan('歌名')}}</th>\n      <th>{{$root.lan('歌手')}}</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr v-for=\"item in list\">\n      <td>{{item.name}}</td>\n      <td>{{item.singer}}</td>\n    </tr>\n  </tbody>\n</table>\n\n";
 
 /***/ }
 

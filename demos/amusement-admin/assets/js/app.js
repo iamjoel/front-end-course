@@ -390,7 +390,7 @@
   \********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\r\n        <span class=\"sr-only\">切换导航{{a}}</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\r\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\">\r\n        <li  v-for=\"module in modules\" v-link=\"{ path: getPath(module)}\" :class=\"{active:pageRoute.indexOf(module.modulePrefix) === 1}\" ><a href=\"javascript:void(0);\">{{lan(module.name)}}</a></li>\r\n        <li><a href=\"javascript:void(0);\" @click=\"changeLan\">{{lanText}}</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\" id=\"main\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-2 sub-menu-wrap\">\r\n      <!-- 左侧的二级菜单 -->\r\n      <sub-menu :page-route=\"pageRoute\"></sub-menu>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n      <router-view></router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<nav class=\"navbar navbar-default\" role=\"navigation\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n        <span class=\"sr-only\">切换导航{{a}}</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">Joy</a>\n    </div>\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n      <ul id=\"menu\" class=\"nav navbar-nav navbar-right\">\n        <li  v-for=\"module in modules\" v-link=\"{ path: getPath(module)}\" :class=\"{active:pageRoute.indexOf(module.modulePrefix) === 1}\" ><a href=\"javascript:void(0);\">{{lan(module.name)}}</a></li>\n        <li><a href=\"javascript:void(0);\" @click=\"changeLan\">{{lanText}}</a></li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid\" id=\"main\">\n  <div class=\"row\">\n    <div class=\"col-sm-2 sub-menu-wrap\">\n      <!-- 左侧的二级菜单 -->\n      <sub-menu :page-route=\"pageRoute\"></sub-menu>\n    </div>\n    <div class=\"col-sm-10\">\n      <router-view></router-view>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 14 */
@@ -438,7 +438,7 @@
   \**********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<ul>\r\n  <li v-for=\"item in subModules\"><a v-link=\"{ path: item.fullPath,activeClass:'active'}\">{{item.name}} {{item.fullPath}}</a></li>\r\n</ul>\r\n";
+	module.exports = "<link rel=\"stylesheet\" href=\"assets/component/sub-menu/style.css\">\n<ul class=\"sub-nav\">\n  <li v-for=\"item in subModules\" class=\"sub-nav__item\"><a v-link=\"{ path: item.fullPath,activeClass:'active'}\">{{item.name}}</a></li>\n</ul>\n";
 
 /***/ },
 /* 16 */
