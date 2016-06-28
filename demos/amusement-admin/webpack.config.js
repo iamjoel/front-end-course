@@ -24,7 +24,8 @@ module.exports = {
       'vue-router': path.resolve(__dirname,'node_modules/vue-router/dist/vue-router.min.js'),
       'vue-resource': path.resolve(__dirname,'node_modules/vue-resource/dist/vue-resource.min.js'),
       'route-component': path.resolve(__dirname,'assets/js-src/helper/route-component.js'),
-      'setting':  path.resolve(__dirname, 'setting.js')
+      'setting':  path.resolve(__dirname, 'setting.js'),
+      'language-helper': path.resolve(__dirname, 'assets/js-src/helper/language.js'),
     }
   }
 };

@@ -1,5 +1,9 @@
 var settings = {
   defaultRoute: '/music/songs',
+  language: {
+    default: 'Ch', // 默认语言
+    others: ['En']// 其他语言
+  },
   modules: [{
     name: '音乐',
     modulePrefix: 'music',// 模块的路由前缀

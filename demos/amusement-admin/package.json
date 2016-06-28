@@ -25,6 +25,7 @@
     "webpack": "1.12.14",
     "anywhere": "1.2.0",
     "html-loader": "0.4.3",
+    "json-loader": "0.5.4",
     "raw-loader": "0.5.1"
   }
 }

@@ -1,21 +1,16 @@
-webpackJsonp([1],[
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+webpackJsonp([1],{
+
+/***/ 6:
 /*!***************************************!*\
   !*** ./assets/component ^\.\/.*\.js$ ***!
   \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./app/index.js": 7,
-		"./film/index.js": 14,
-		"./music/song/list.js": 17,
-		"./sub-menu/index.js": 10
+		"./film/index.js": 7,
+		"./layout/index.js": 10,
+		"./music/song/list.js": 18,
+		"./sub-menu/index.js": 14
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -32,28 +27,23 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
+
+/***/ 7:
 /*!****************************************!*\
   !*** ./assets/component/film/index.js ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var RouteComponent = __webpack_require__(/*! route-component */ 15);
+	var RouteComponent = __webpack_require__(/*! route-component */ 8);
 	
 	var Main = RouteComponent.extend({
-	  template: __webpack_require__(/*! ./index.html */ 16),
+	  template: __webpack_require__(/*! ./index.html */ 9),
 	});
 	module.exports  = Main;
 
 /***/ },
-/* 15 */
+
+/***/ 8:
 /*!*************************************************!*\
   !*** ./assets/js-src/helper/route-component.js ***!
   \*************************************************/
@@ -80,7 +70,8 @@ webpackJsonp([1],[
 	module.exports  = RouteComponent;
 
 /***/ },
-/* 16 */
+
+/***/ 9:
 /*!******************************************!*\
   !*** ./assets/component/film/index.html ***!
   \******************************************/
@@ -89,16 +80,17 @@ webpackJsonp([1],[
 	module.exports = "Film Page!";
 
 /***/ },
-/* 17 */
+
+/***/ 18:
 /*!*********************************************!*\
   !*** ./assets/component/music/song/list.js ***!
   \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var RouteComponent = __webpack_require__(/*! route-component */ 15);
+	var RouteComponent = __webpack_require__(/*! route-component */ 8);
 	
 	var Main = RouteComponent.extend({
-	  template: __webpack_require__(/*! ./list.html */ 18),
+	  template: __webpack_require__(/*! ./list.html */ 19),
 	  data: {
 	    list:[]
 	  },
@@ -112,14 +104,16 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 18 */
+
+/***/ 19:
 /*!***********************************************!*\
   !*** ./assets/component/music/song/list.html ***!
   \***********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<table class=\"table table-hover table-striped\">\r\n  <thead>\r\n    <tr>\r\n      <th>歌名</th>\r\n      <th>歌手</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr v-for=\"item in list\">\r\n      <td>{{item.name}}</td>\r\n      <td>{{item.singer}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n";
+	module.exports = "<table class=\"table table-hover table-striped\">\r\n  <thead>\r\n    <tr>\r\n      <th>{{$root.lan('歌名')}}</th>\r\n      <th>{{$root.lan('歌手')}}</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr v-for=\"item in list\">\r\n      <td>{{item.name}}</td>\r\n      <td>{{item.singer}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n";
 
 /***/ }
-]);
+
+});
 //# sourceMappingURL=1.1.js.map

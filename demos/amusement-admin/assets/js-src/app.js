@@ -21,7 +21,13 @@ router.beforeEach(function(transition) {
 });
 
 
-
+// 多语言
+var setting = require('setting');
+var otherLans = setting.language.others;
+otherLans.forEach(function (lan) {
+  var languageData = JSON.stringify(require('json!../language/' + lan + '.json'));
+  localStorage.setItem('lan-' + lan, languageData);
+});
 
 // 启动
-router.start(require('../component/app/index'), '#app');
+router.start(require('../component/layout/index'), '#app');
