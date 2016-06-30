@@ -26,6 +26,9 @@ module.exports = {
       'route-component': path.resolve(__dirname,'assets/js-src/helper/route-component.js'),
       'setting':  path.resolve(__dirname, 'setting.js'),
       'language-helper': path.resolve(__dirname, 'assets/js-src/helper/language.js'),
+      'modal': path.resolve(__dirname, 'assets/component/modal/index.js'),
+      'alert': path.resolve(__dirname, 'assets/component/alert/index.js'),
+      'confirm': path.resolve(__dirname, 'assets/component/confirm/index.js'),
     }
   }
 };

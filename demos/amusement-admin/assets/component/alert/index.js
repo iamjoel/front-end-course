@@ -1,5 +1,6 @@
 var Vue = require('vue');
-var Modal = Vue.component('modal', {
+var Modal = require('modal')
+module.exports = Vue.component('alert', {
   template: require('./index.html'),
   props: {
     show: {
@@ -13,5 +14,4 @@ var Modal = Vue.component('modal', {
   }
 });
 
-module.exports = Modal;
 
