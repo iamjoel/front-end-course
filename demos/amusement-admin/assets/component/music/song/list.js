@@ -1,5 +1,8 @@
 var RouteComponent = require('route-component');
 
+// var css = require('style!./list.css');
+// console.log(css);
+
 var Main = RouteComponent.extend({
   template: require('./list.html'),
   data: {
