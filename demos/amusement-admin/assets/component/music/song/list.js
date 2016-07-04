@@ -1,6 +1,6 @@
 var RouteComponent = require('route-component');
 
-var css = require('css!./list.css');
+var css = require('./list.css');
 
 var Main = RouteComponent.extend({
   template: '<style>' + css + '</style>' + require('./list.html'),

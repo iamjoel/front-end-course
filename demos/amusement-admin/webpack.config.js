@@ -14,11 +14,9 @@ module.exports = {
     loaders: [
       { test: /\.html$/, loader: "html-loader" }, {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]'
-        ]
-      }
-      // { test: /\.css$/, loader: "style-loader!css-loader" },
+        loader: 'file?hash=sha512&digest=hex&name=[hash].[ext]'
+      },
+      { test: /\.css$/, loader: "css-loader" }
     ]
   },
   resolve: {
