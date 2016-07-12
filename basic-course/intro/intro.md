@@ -1,18 +1,14 @@
-# 介绍
-## 简单的页面
-页面由 HTML，CSS，JavaScript 组成。demo页面[点这里](demo/basic/index.html)。
-
-HTML 描述页面的结构，CSS 设置页面的外观，JavaScript 设置页面的行为。
-
+#  Web 前端介绍
 ## 工作内容
-做出 UI 与设计稿一致，逻辑与需求文档一致的的页面。
+Web 前端工程师的主要工作是做页面。
 
-具体来说:  
+页面由 HTML，CSS，JavaScript 组成，其中：HTML 描述页面的结构，CSS 设置页面的外观，JavaScript 设置页面的行为。demo页面[点这里](demo/basic/index.html)。
+
+具体工作为:  
 
 1. 和产品经理沟通需求
 1. 和后端确定数据交互接口
 1. 切图，写 HTML，CSS，JS
-
 
 ## 前端学什么
 * 基础知识。HTML，CSS，JavaScript，浏览器调试等
