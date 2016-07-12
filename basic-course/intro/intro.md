@@ -1,6 +1,8 @@
 # 介绍
 ## 简单的页面
-[点这里](demo/basic/index.html)
+页面由 HTML，CSS，JavaScript 组成。demo页面[点这里](demo/basic/index.html)。
+
+HTML 描述页面的结构，CSS 设置页面的外观，JavaScript 设置页面的行为。
 
 ## 工作内容
 做出 UI 与设计稿一致，逻辑与需求文档一致的的页面。
