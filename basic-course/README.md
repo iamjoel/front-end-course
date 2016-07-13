@@ -2,7 +2,7 @@
 ## 基础
 * Web 前端介绍 1课时
   * [介绍](intro/intro.md)
-  * [开发常用软件](intro/software.md)
+  * [常用开发软件](intro/software.md)
   * [推荐学习方法及资源](intro/suggest.md)
 * HTML 1课时
   * 基本结构
