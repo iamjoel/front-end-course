@@ -18,6 +18,10 @@
   * [JavaScript 标准参考教程（alpha）- 阮一峰](http://javascript.ruanyifeng.com/)
   * [JavaScript简易教程 v0.3.0 - 颜海镜](http://yanhaijing.com/basejs/) 我所知道最完整最简洁的JavaScript基础教程
   * [学习布局](http://zh.learnlayout.com/)
+* 书
+  * 图解CSS3 核心实战与案例实践
+  * [《CSS Secrets》中文版](https://github.com/cssmagic/CSS-Secrets)
+  * JavaScript高级程序设计
 * 阅读
   * [掘金](http://gold.xitu.io) 国内质量最高的技术分享社区
   * [开发者头条](http://toutiao.io/)
