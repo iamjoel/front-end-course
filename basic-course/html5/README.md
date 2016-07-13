@@ -15,7 +15,7 @@ HTML5 是对 HTML 标准的第五次修订，于2014年10月29日已完工。每
 * 地理位置信息（geolocation）。 [demo](http://html5demos.com/geo)。
 * 还有更多
 
-注意：不同的浏览器 HTML5 标准支持各不相同。各浏览器对 HTML5 支持下见[这里](http://html5test.com/)
+注意：不同的浏览器 HTML5 标准支持各不相同。各浏览器对 HTML5 支持下见[这里](http://html5test.com/)。
 
 ## 对开发者的影响
 实现某些功能有更简单或更合适的解决方案。
