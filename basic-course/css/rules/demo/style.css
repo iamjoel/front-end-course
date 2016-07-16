@@ -56,7 +56,7 @@ body{
   height: 100%;
 }
 
-.bg-c,.bg-l,.bg-nr,.bg-icon, .bg-icon-s{
+.bg-c,.bg-l,.bg-nr,.bg-r,.bg-icon, .bg-icon-s{
   height: 50px;
   line-height: 50px;
   color: #fff;
@@ -75,6 +75,11 @@ body{
 
 .bg-nr{
   background: #333  url(icon.png) no-repeat;
+}
+
+.bg-r{
+  height: 100px;
+  background: #333  url(icon.png) right bottom no-repeat;
 }
 
 .bg-icon{

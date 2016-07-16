@@ -13,7 +13,7 @@
   * [选择器](css/selector)
   * [布局](css/layout)
   * [常用规则](css/rules)
-  * 继承与层叠
+  * [继承与层叠](css/inheritance-and-cascade)
 * [Photoshop 的简单使用及切图](psd) 1课时
 * JS 3课时
   * 基本语法
