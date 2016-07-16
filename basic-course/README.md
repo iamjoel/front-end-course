@@ -11,7 +11,7 @@
 * CSS 4课时
   * [样式写在哪](css/place/demo.html)
   * [选择器](css/selector)
-  * 布局
+  * [布局](css/layout)
   * 常用规则
   * 继承与层叠
 * Photoshop 的简单使用及切图 1课时
