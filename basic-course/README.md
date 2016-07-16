@@ -14,7 +14,7 @@
   * [布局](css/layout)
   * 常用规则
   * 继承与层叠
-* [Photoshop 的简单使用及切图](photoshop) 1课时
+* [Photoshop 的简单使用及切图](psd) 1课时
 * JS 3课时
   * 基本语法
   * 内置对象的常用方法
