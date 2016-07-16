@@ -12,7 +12,7 @@
   * [样式写在哪](css/place/demo.html)
   * [选择器](css/selector)
   * [布局](css/layout)
-  * 常用规则
+  * [常用规则](css/rules)
   * 继承与层叠
 * [Photoshop 的简单使用及切图](psd) 1课时
 * JS 3课时

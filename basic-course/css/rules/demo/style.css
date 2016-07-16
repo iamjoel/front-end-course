@@ -1,0 +1,143 @@
+body{
+  margin: 0;
+}
+.demo{
+  width: 960px;
+  margin: 5px auto;
+  padding: 5px 0;
+}
+
+.demo h2{
+  margin: 0;
+}
+
+.width-and-height{
+  height: 100px;
+  width: 100px;
+  background-color: #333;
+  color: #fff;
+}
+
+.block{
+  width: 100px;
+  height: 100px;
+  margin: 10px 5px 6px 3px;
+  padding: 10px 5px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.d-b{
+  display: block;
+  margin-bottom: 5px;
+}
+.d-i{
+  display: inline;
+  margin-right: 10px;
+}
+.d-n{
+  display: none;
+}
+
+.pos-r{
+  position: relative;
+  height: 26px;
+  line-height: 26px;
+  background-color: #333;
+  color: #fff;
+  padding-left: 100px;
+}
+
+.pos-a{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  height: 100%;
+}
+
+.bg-c,.bg-l,.bg-nr,.bg-icon, .bg-icon-s{
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  margin-bottom: 10px;
+  padding-left: 100px;
+}
+
+.bg-c{
+  background-color: #333;
+}
+
+.bg-l{
+  height: 200px;
+  background: #333 url(icon.png);
+}
+
+.bg-nr{
+  background: #333  url(icon.png) no-repeat;
+}
+
+.bg-icon{
+  background: #333 url(icon.png) 20px center no-repeat;
+}
+
+.bg-icon-s{
+  background: #333 url(icon.png) 20px center no-repeat;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+}
+
+.border-solid,.border-dash,.border-radious{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin-bottom: 10px;
+  background-color: #333;
+}
+
+.border-solid{
+  border: 3px solid red;
+}
+
+.border-dash{
+  border: 3px dashed red;
+}
+
+.border-radious{
+  border-radius: 50%;
+}
+
+.cur-hand{
+  height: 30px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.cur-move{
+  height: 30px;
+  cursor: move;
+}
+
+.font{
+  font-family: tahoma,arial,"STXihei","Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", "宋体", SimSun;
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+  font-style: italic;
+  text-decoration: line-through;
+  line-height: 1.5;
+}
+
+.op-a,.op-bg{
+  height: 26px;
+  line-height: 26px;
+  background-color: #ff0000;
+  color: #333;
+  margin-bottom: 10px;
+}
+.op-a{
+  opacity: 0.5;
+}
+.op-bg{
+  background-color: rgba(255, 0, 0, .5);
+}
