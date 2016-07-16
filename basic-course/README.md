@@ -6,7 +6,7 @@
   * [推荐学习方法及资源](intro/suggest.md)
 * HTML 1课时
   * [基本结构](html/struct.md)
-  * 常见元素及属性
+  * [常见元素及属性](html/tag-and-attr.md)
 * [HTML5 简介](html5/)
 * CSS 4课时
   * 选择器
