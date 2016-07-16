@@ -9,7 +9,7 @@
   * [常见元素及属性](html/tag-and-attr.md)
 * [HTML5 简介](html5/)
 * CSS 4课时
-  * [样式写在哪](css/demo/place/demo.html)
+  * [样式写在哪](css/place/demo.html)
   * [选择器](css/selector)
   * 布局
   * 常用规则

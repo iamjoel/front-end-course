@@ -1,4 +1,4 @@
-# CSS 选择器 [demo](../demo/selector.html)
+# CSS 选择器 [demo](demo/selector.html)
 用来选择页面上择需要添加样式的元素。
 
 ## 目录
