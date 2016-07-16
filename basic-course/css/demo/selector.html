@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>选择器 demo</title>
+  <style>
+  /*标签名*/
+  body{
+    margin: 0;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  /* 类名 */
+  .box{
+    width: 200px;
+    padding: 10px 0;
+  }
+  /* id */
+  #news-box{
+    margin: 30px auto;
+  }
+
+  .news__item{
+    height: 26px;
+    line-height: 26px;
+    border-bottom: 1px solid #ddd;
+  }
+  /*最后一个元素*/
+  .news__item:last-child{
+    border-bottom: none;
+  }
+  /*子元素（一层）*/
+  .news__item>a{
+    text-decoration: none;
+    color: #f60;
+  }
+  /*后代元素（任意层）*/
+  .news__item a:visited{/* 访问过的*/
+    color: #0f0;
+  }
+  .news__item a:hover{/* hover时*/
+    color: #00f;
+  }
+  .news__item a:hover::after{
+    content: '被你发现啦'
+  }
+
+  </style>
+</head>
+<body>
+  <div class="box" id="news-box">
+    <div class="box__header">最受欢迎的新闻</div>
+    <div class="box__body">
+      <ul class="news">
+        <li class="news__item"><a href="http://www.xiami.com">新闻1</a></li>
+        <li class="news__item"><a href="http://toutiao.io/">新闻2</a></li>
+        <li class="news__item"><a href="http://fdffdfd">新闻3</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+</body>
+</html>
