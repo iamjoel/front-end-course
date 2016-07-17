@@ -171,7 +171,13 @@
     <h2>表单</h2>
     <form action="submit-url" method="post">
       <label class="form-item">姓名
-        <input type="text" placeholder="姓名">
+        <input type="text" placeholder="姓名" value="aaa">
+      </label>
+      <label class="form-item">只读姓名
+        <input type="text" placeholder="姓名" value="aaa" readonly>
+      </label>
+      <label class="form-item">disabled姓名
+        <input type="text" placeholder="姓名" value="aaa" disabled>
       </label>
       <label class="form-item">手机号
         <input type="nubmer" maxlength="11">
@@ -181,7 +187,7 @@
           <option value="jiangsu">江苏</option>
           <option value="shanghai">上海</option>
           <option value="jx">江西</option>
-          <option value="hn">河南</option>
+          <option value="hn" selected>河南</option>
           <option value="hb">湖北</option>
           <option value="hun">湖南</option>
           <option value="beijing">北京</option>
@@ -200,10 +206,10 @@
           吃 <input type="checkbox" name="habbit" value="eat">
         </label>
         <label>
-          玩 <input type="checkbox" name="habbit" value="play">
+          玩 <input type="checkbox" name="habbit" value="play" checked>
         </label>
         <label>
-          其他 <input type="checkbox" name="habbit" value="other">
+          其他 <input type="checkbox" name="habbit" value="other" checked>
         </label>
       </div>
       <label class="form-item">

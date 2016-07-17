@@ -90,6 +90,8 @@ CSS3选择器最新部分，有人也称这种选择器为CSS3结构类
 * :last-child选择某个元素的最后一个子元素；
 * :nth-child()选择某个元素的一个或多个特定的子元素；
 * :nth-last-child()选择某个元素的一个或多个特定的子元素，从这个元素的最后一个子元素开始算；
+* :even
+* :odd
 * :nth-of-type()选择指定的元素；
 * :nth-last-of-type()选择指定的元素，从元素的最后一个开始计算；
 * :first-of-type选择一个上级元素下的第一个同类子元素；
@@ -112,10 +114,10 @@ CSS3选择器最新部分，有人也称这种选择器为CSS3结构类
 	* `[abc*="def"]`表示 选择 abc 属性值中包含子串 "def" 的所有元素
 
 ## <a name="pseudo-elem">伪元素选择器</a>
-* `:before` 在元素之前添加内容
-* `:after` 在元素之后添加内容
-* `:first-line`  向文本的首行添加特殊样式
-* `:first-letter` 向文本的第一个字母添加特殊样式
+* `::before` 在元素之前添加内容
+* `::after` 在元素之后添加内容
+* `::first-line`  向文本的首行添加特殊样式
+* `::first-letter` 向文本的第一个字母添加特殊样式
 
 
 ## <a name="selector-weight">选择器权重</a>
