@@ -16,8 +16,8 @@
   * [继承与层叠](css/inheritance-and-cascade)
 * [Photoshop 的简单使用及切图](psd) 1课时
 * JS 3课时
-  * 基本语法
-  * 内置对象的常用方法
+  * [基本语法](js/grammar)
+  * 内置对象及其常用方法
 * 浏览器相关介绍 1课时
   * DOM
   * BOM
