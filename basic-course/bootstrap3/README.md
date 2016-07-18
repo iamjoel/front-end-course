@@ -66,3 +66,13 @@ fontawesom
 
 ## 栅格系统
 
+## 注意点
+Bootstrap 里设置所以元素的 box-sizing 为 border-box。
+```
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+```
+
