@@ -14,6 +14,8 @@
   * [布局](css/layout)
   * [常用规则](css/rules)
   * [继承与层叠](css/inheritance-and-cascade)
+  * 常用命名
+  * BEM
 * [Photoshop 的简单使用及切图](psd) 1课时
 * [响应式介绍](responsive) 1课时
 * [Bootstrap3](bootstrap) 2课时
