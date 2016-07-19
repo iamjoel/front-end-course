@@ -15,6 +15,11 @@
   * [常用规则](css/rules)
   * [继承与层叠](css/inheritance-and-cascade)
 * [Photoshop 的简单使用及切图](psd) 1课时
+* [响应式介绍](responsive) 1课时
+* [Bootstrap3](bootstrap) 2课时
+  * 常用组件
+  * 字体图标
+  * 栅格系统
 * JS 3课时
   * [基本语法](js/grammar)
   * 内置对象及其常用方法
@@ -27,11 +32,6 @@
   * 异步流程控制
   * 动画效果
 * 调试代码 1课时
-* [Bootstrap3](bootstrap) 2课时
-  * 常用组件
-  * 字体图标
-  * 栅格系统
-* 响应式介绍 1课时
 
 总共 20 课时
 
