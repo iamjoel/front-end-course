@@ -61,15 +61,18 @@
 
 ## 常用组件
 
-## 字体图标
+## 字体图标(Icon Font)
 字体图标即把图标做成字体。优势  
 * 自由变化大小
 * 自由修改颜色
 * 方便添加一些视觉效果，如：阴影、旋转、透明度。
 * 兼容IE6
+* 通过一些技巧也也可以做出多彩的图标
+
+[超越 icon font](http://yisibl.github.io/share/exceed-icon-font-sh.html#/) 一丝的 PPT
 
 ### 一些免费的字体图标
-* [Font Awesome](http://fontawesome.io/)
+* [Font Awesome](http://fontawesome.io/) BootStrap 就用图标用的就是 Font Awesome。
 * [阿里巴巴矢量图标库](http://www.iconfont.cn/)
 
 ## 栅格系统
