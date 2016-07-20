@@ -98,7 +98,7 @@ body {
 .news__item h2 {
   margin-top: 0;
 }
-.news__item--full-pic__title {
+.news__item--full-pic .news__item-title {
   height: .5rem;
   line-height: .5rem;
   overflow: hidden;
@@ -106,7 +106,7 @@ body {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-.news__item--full-pic__img {
+.news__item--full-pic .news__item-img {
   display: block;
   width: 100%;
   height: 1.68rem;
@@ -115,17 +115,18 @@ body {
   padding-top: .15rem;
   *zoom: 1;
 }
+/* 清除浮动 */
 .news__item--left-pic:after {
   content: "";
   display: table;
   clear: both;
 }
-.news__item--left-pic__title {
+.news__item--left-pic .news__item-title {
   margin-left: 2.1rem;
   padding-top: .05rem;
   line-height: .4rem;
 }
-.news__item--left-pic__img {
+.news__item--left-pic .news__item-img {
   float: left;
   width: 2rem;
   height: .9rem;
