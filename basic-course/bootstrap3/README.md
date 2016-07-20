@@ -62,7 +62,15 @@
 ## 常用组件
 
 ## 字体图标
-fontawesom
+字体图标即把图标做成字体。优势  
+* 自由变化大小
+* 自由修改颜色
+* 方便添加一些视觉效果，如：阴影、旋转、透明度。
+* 兼容IE6
+
+### 一些免费的字体图标
+* [Font Awesome](http://fontawesome.io/)
+* [阿里巴巴矢量图标库](http://www.iconfont.cn/)
 
 ## 栅格系统
 
@@ -75,4 +83,8 @@ Bootstrap 里设置所以元素的 box-sizing 为 border-box。
     box-sizing: border-box;
 }
 ```
+
+## 工具
+* [Sublime 的 Bootstrap 3 代码片段插件](https://github.com/JasonMortonNZ/bs3-sublime-plugin)
+* [LayoutIt](http://www.layoutit.com/) Bootstrap可视化布局系统。
 
