@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>media queries basic use</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+    body {
+        margin: 0;
+    }
+    div {
+        margin: 0px;
+        padding: 0;
+    }
+    .wrap:before,
+    .wrap:after {
+        content: " ";
+        display: table;
+    }
+    .wrap:after {
+        clear: both;
+    }
+    .wrap {
+    	box-sizing: border-box;
+        margin: 30px auto;
+    }
+    .wrap>*{
+    	transition: width 1s ease-out;
+    }
+    .wrap :first-child {
+        background: #f00;
+    }
+    .wrap :last-child {
+        background: #ff0;
+    }
+    [class^=col-] {
+        height: 30px;
+        float: left;
+    }
+    .col-3{
+        width: 25%;
+    }
+    .col-9{
+        width: 75%;
+    }
+    @media (min-width: 480px){
+        .col-md-6 {
+            width: 50%;
+        }
+    }
+    @media (min-width: 768px) {
+        .col-lg-3 {
+            width: 25%;
+        }
+        .col-lg-9 {
+            width: 75%;
+        }
+    }
+    @media (width: 1000px) {
+        .col-3, .col-9 {
+            display: none;
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+	<h2>调整页面宽度~</h2>
+    <div class="wrap">
+        <div class="col-lg-9 col-md-6 col-3"></div>
+        <div class="col-lg-3 col-md-6 col-9"></div>
+    </div>
+</body>
+
+</html>
