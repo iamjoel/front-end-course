@@ -18,7 +18,7 @@
   * [BEM](css/BEM)
 * [Photoshop 的简单使用及切图](psd) 1课时
 * [响应式介绍](responsive) 1课时
-* [Bootstrap3](bootstrap) 2课时
+* [Bootstrap3](bootstrap3) 2课时
   * 常用组件
   * 字体图标
   * 栅格系统
