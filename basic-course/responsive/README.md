@@ -10,6 +10,7 @@
 * 元素的显示和隐藏
 * 不同设备加载不同尺寸的图片
 * 导航链接在 PC 站在显示在一行，在小屏手机上，导航折叠成一个按钮，点按钮看到所有的按钮
+* 移动设备的某些浏览器上，点击会用300ms的延迟（mobile browsers will wait approximately 300ms from the time that you tap the button to fire the click event. The reason for this is that the browser is waiting to see if you are actually performing a double tap.）。可以用[fastclick](https://github.com/ftlabs/fastclick)。
 * PC 页面用分页，手机用下拉加载下一页
 
 ## 技术手段
