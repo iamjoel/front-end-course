@@ -1,4 +1,8 @@
 # Bootstrap3 [官网](http://getbootstrap.com/) [中文版](http://v3.bootcss.com/)
+Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。
+
+特别适合用来后台管理界面。
+
 ## 使用方法
 1. 下载 Bootstrap。 见[这里](http://v3.bootcss.com/getting-started/)。
 1. 在页面中引入 Bootstrap 的 CSS，JS 和 jQuery。也可以用某某提供的免费 CDN 上的
@@ -60,6 +64,8 @@
 * danger
 
 ## 常用组件
+* [UI 插件](http://v3.bootcss.com/components/)
+* [JS 插件](http://v3.bootcss.com/javascript/)
 
 ## 字体图标(Icon Font)
 字体图标即把图标做成字体。优势  
@@ -76,6 +82,7 @@
 * [阿里巴巴矢量图标库](http://www.iconfont.cn/)
 
 ## 栅格系统
+[这里](http://v3.bootcss.com/css/#grid-options)
 
 ## 注意点
 Bootstrap 里设置所以元素的 box-sizing 为 border-box。
@@ -90,4 +97,9 @@ Bootstrap 里设置所以元素的 box-sizing 为 border-box。
 ## 工具
 * [Sublime 的 Bootstrap 3 代码片段插件](https://github.com/JasonMortonNZ/bs3-sublime-plugin)
 * [LayoutIt](http://www.layoutit.com/) Bootstrap可视化布局系统。
+
+## 皮肤
+* Core Admin
+* [metronic](http://keenthemes.com/preview/metronic/) [预览](http://www.yyyweb.com/demo/metronic-bootstrap/index.html)
+* [更多](https://www.awesomes.cn/subject/admins?page=1)
 
