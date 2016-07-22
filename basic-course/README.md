@@ -22,12 +22,12 @@
   * 常用组件
   * 字体图标
   * 栅格系统
-* JS 3课时
-  * [基本语法](js/grammar)
+* [JS](js/grammar) 3课时
+  * 基本语法
   * 内置对象及其常用方法
 * 浏览器相关介绍 1课时
-  * DOM
-  * BOM
+  * [DOM](DOM)
+  * [BOM](BOM)
 * jQuery 5课时
   * 操作 DOM
   * HTTP, JSON 以及 Ajax
