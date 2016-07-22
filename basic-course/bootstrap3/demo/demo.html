@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Demo</title>
+  <link rel="stylesheet" href="bootstrap-3.3.5/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width">
+  <style>
+  [class^=col-] {
+    min-height: 30px;
+    background-color: #ddd;
+  }
+  
+  .bg-red {
+    background-color: #f00;
+  }
+  
+  .bg-green {
+    background-color: #0f0;
+  }
+  
+  .bg-blue {
+    background-color: #00f;
+  }
+  </style>
+</head>
+
+<body>
+  <h2>栅格</h2>
+  <div class="container-fluid">
+    <h3>在手机上占满，在大屏堆叠显示</h3>
+    <div class="row">
+      <div class="col-sm-4 bg-red"></div>
+      <div class="col-sm-8 bg-green"></div>
+    </div>
+    <h3>总是占不同比例</h3>
+    <div class="row">
+      <div class="col-xs-2 bg-red"></div>
+      <div class="col-xs-10 bg-green"></div>
+    </div>
+    <h3>在不同宽度占不同比例</h3>
+    <div class="row">
+      <div class="col-xs-2 col-sm-4 col-md-6 col-lg-8 bg-red"></div>
+      <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 bg-green"></div>
+    </div>
+    <h3>偏移</h3>
+    <div class="row">
+      <div class="col-sm-4 bg-red"></div>
+      <div class="col-sm-4 col-sm-offset-2 bg-green"></div>
+    </div>
+    <h2>嵌套</h2>
+    <div class="row">
+      <div class="col-sm-4 bg-red">
+        <div class="row">
+          <div class="col-sm-4 bg-green"></div>
+          <div class="col-sm-7 bg-blue"></div>
+        </div>
+      </div>
+      <div class="col-sm-8 bg-green"></div>
+    </div>
+  </div>
+  <h2>全局 CSS</h2>
+  <h3>按钮</h3>
+  <button type="button" class="btn btn-default">（默认样式）Default</button>
+  <a href="###" class="btn btn-default">（默认样式）Default</a>
+  <button type="button" class="btn btn-primary">（首选项）Primary</button>
+  <button type="button" class="btn btn-success">（成功）Success</button>
+  <button type="button" class="btn btn-info">（一般信息）Info</button>
+  <button type="button" class="btn btn-warning">（警告）Warning</button>
+  <button type="button" class="btn btn-danger">（危险）Danger</button>
+  <button type="button" class="btn btn-link">（链接）Link</button>
+  <p>
+    <button type="button" class="btn btn-primary btn-lg">（大按钮）Large button</button>
+    <button type="button" class="btn btn-default btn-lg">（大按钮）Large button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary">（默认尺寸）Default button</button>
+    <button type="button" class="btn btn-default">（默认尺寸）Default button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm">（小按钮）Small button</button>
+    <button type="button" class="btn btn-default btn-sm">（小按钮）Small button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-xs">（超小尺寸）Extra small button</button>
+    <button type="button" class="btn btn-default btn-xs">（超小尺寸）Extra small button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg active">Button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+  </p>
+  <h2>图片</h2>
+  <img class="img-rounded" style="width: 140px; height: 140px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTYxMTdkODcwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NjExN2Q4NzBkIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=">
+  <img class="img-circle" style="width: 140px; height: 140px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTYxMTdkYmQ3ZiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NjExN2RiZDdmIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=">
+  <img class="img-thumbnail" style="width: 140px; height: 140px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTYxMTdkN2IwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NjExN2Q3YjBkIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=">
+  <h2>文字颜色</h2>
+  <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+  <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+  <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+  <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+  <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <h2>背景色</h2>
+  <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+  <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+  <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+  <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <h2>布局相关</h2>
+  <div class="clearfix">
+    <div class="pull-left">左边</div>
+    <div class="pull-right">右边</div>
+  </div>
+  <div class="center-block bg-success" style="width: 100px;padding:10px;text-align:center;">居中的块</div>
+  <h2>组件</h2>
+  <h3>字体图标</h3>
+  <div style="text-align: center;">
+    <span class="glyphicon glyphicon-pencil" style="font-size:50px;text-shadow: 2px 2px 3px #666; transform: rotate(20deg);"></span>
+    <span class="glyphicon glyphicon-pencil" style="color: red"></span>
+  </div>
+  <h3>下拉菜单</h3>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Dropdown
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
