@@ -115,27 +115,20 @@ function getUser(id, other){
   // doSth
 };
 
-genUser(1, {});
+getUser(1, {});
 
 // 获取不定参数
 function add(){
   var sum = 0;
-  var agsLen = arugmnents.length;
+  var argsLen = arguments.length;
   for(var i = 0; i < argsLen; i++){
-    sum = sum + argumnents[i];
+    sum = sum + arguments[i];
   }
   return sum;
 }
 
 add(1, 2);
 add(1, 2, 3);
-
-// 函数表达式
-var getSth = function(){
-  // doSth
-};
-
-getSth();
 ```
 
 
@@ -170,6 +163,12 @@ function foo(){
   var c = 3;
 }
 
+function foo(){
+  var c;
+  console.log(c);// 报错；3；或 undefined
+  c = 3;
+}
+
 foo();
 ```
 
@@ -180,7 +179,9 @@ if(true){
   var a = 3;
   let b = 4;
 }
-a; // 访问的了
+a; // 访问的了 3
+a = 4;
+
 b; // 访问不了
 
 function doIt(){
@@ -215,6 +216,8 @@ var another = {
 }
 
 info.sayIt.call(another);// 输出：another
+var c = info.sayIt;
+c();
 info.sayIt.bind(another)(); // 输出：another
 
 setTimeout(info.sayIt, 10);// 输出: joel
@@ -223,6 +226,10 @@ setTimeout(function(){
 }, 10);
 setTimeout(info.sayIt.bind(info), 10); // 输出: info
 
+functon changeThis(callback){
+  callback.call(window);
+}
+changeThis(info.sayIt);
 ```
 
 
