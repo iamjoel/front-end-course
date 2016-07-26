@@ -28,7 +28,7 @@
 * 浏览器相关介绍 1课时
   * [DOM](DOM)
   * [BOM](BOM)
-* jQuery 5课时
+* [jQuery](jQuery) 5课时
   * 操作 DOM
   * HTTP, JSON 以及 Ajax
   * 异步流程控制
