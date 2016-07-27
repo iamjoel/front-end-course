@@ -31,9 +31,9 @@
 * [jQuery](jQuery) 5课时
   * [选择元素](jQuery/select-elem)
   * [获取和设置元素信息](jQuery/get-or-set-elem-info)
-  * HTTP, JSON 以及 Ajax
-  * 异步流程控制
-  * 动画效果
+  * [HTTP, JSON 以及 Ajax](jQuery/ajax)
+  * [异步流程控制](jQuery/deferred)
+  * [动画效果](jQuery/animate)
 * [调试代码](debug) 1课时
 
 总共 20 课时

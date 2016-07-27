@@ -29,7 +29,7 @@ jqXHR上的属性和方法
 * getAllResponseHeaders()
 * getResponseHeader()
 * statusCode()
-* abort()
+* abort() 停止请求
 
 
 ## 配置全局ajax默认值
@@ -45,6 +45,8 @@ $.ajaxSetup({
 不建议
 
 ## jsonp
+
+
 ## promise
 * done
 * fail
