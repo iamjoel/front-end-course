@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery 选元素 Demo 页</title>
+</head>
+
+<body>
+  <h1 id="page-title">jQuery 选元素 Demo</h1>
+  <div class="b">
+    <ul class="b">
+      <li>用 $(CSS选择器或jQuery自定义的选择器)</li>
+      <li class="a">找父元素用 $el.closest 和 $el.parents</li>
+      <li>找子元素用 $el.find</li>
+      <li>筛选元素用 $el.filter</li>
+    </ul>
+  </div>
+
+  <h2>Question</h2>
+  <ol>
+    <li>找所有类名为a的元素</li>
+    <li>ul下所有li</li>
+    <li>ul下第2，第3个li</li>
+    <li>ul下除了第一个外的所有li</li>
+    <li>找类名a所有类名为b的父元素</li>
+    <li>找离类名a最近的类名为b的父元素</li>
+    <li>找离类名a最远的类名为b的父元素</li>
+  </ol>
+
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    // 找离类名a最远的类名为b的父元素
+    function findB($el) {
+      var $par = $el.parents('.b').eq(0);
+      if ($par.parents('.b').length > 0) {
+        return findB($par);
+      } else {
+        return $par;
+      }
+    }
+    findB($('.a'));
+  </script>
+</body>
+
+</html>

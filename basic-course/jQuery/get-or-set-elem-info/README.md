@@ -6,7 +6,7 @@
 
 attr 和 prop 的区别是： attr 在 DOM 中, 如 `$('a').attr('title')`, DOM: `<a title="aaa"></a>`)，prop 不一定在 DOM 中, `$('a').attr('tagName')`,但 a 没有 tagName 这个属性。
 
-用 prop 的属性用
+用 prop 的属性有
 * checked
 * outerHTML
 * tagName

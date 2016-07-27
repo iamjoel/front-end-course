@@ -32,7 +32,7 @@ $('.list').eq(3);
 #### 表单类
 * [:checked](https://api.jquery.com/checked-selector/) 选中的单选和复选按钮
 * [:selected](https://api.jquery.com/selected-selector) 选中的 `<option>` 元素
-* [:disabled](https://api.jquery.com/disabled-selector) ji用的表单元素
+* [:disabled](https://api.jquery.com/disabled-selector) 禁用的表单元素
 
 #### 是否可见
 * [:visible](https://api.jquery.com/visible-selector/) 可见元素

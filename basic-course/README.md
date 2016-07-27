@@ -29,7 +29,8 @@
   * [DOM](DOM)
   * [BOM](BOM)
 * [jQuery](jQuery) 5课时
-  * 操作 DOM
+  * [选择元素](jQuery/select-elem)
+  * [获取和设置元素信息](jQuery/get-or-set-elem-info)
   * HTTP, JSON 以及 Ajax
   * 异步流程控制
   * 动画效果
