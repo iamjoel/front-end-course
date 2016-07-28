@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animate Demo</title>
+</head>
+
+<body>
+  <button id="clickme">点我</button>
+  <div class="target" style="width: 100px; height: 100px; background:#f00"></div>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+  var $target = $('.target');
+  $('#clickme').click(function() {
+    $target.animate({
+      width: '150px',
+      height: '+=50px'
+    }, 1000, function() {
+      $target.width(Math.random() * 200);
+      console.log('动画完成');
+    });
+  });
+  </script>
+</body>
+
+</html>
