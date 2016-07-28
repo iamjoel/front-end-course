@@ -8,8 +8,12 @@ $elem.on(事件名称, 事件处理函数)
 ### 简写
 * click
 * dblclick 双击
+* mouseenter
+* mouseleave
+* mousemove
+* mouseout
+* hover 移动到元素上和移出。 等效与 mouseenter 和 mouseleave
 * change 表单元素的值发生变化
-* hover 移动到元素上和移出
 * keyup
 * keydown
 * keypress
