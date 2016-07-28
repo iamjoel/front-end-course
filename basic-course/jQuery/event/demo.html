@@ -1,39 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>事件</title>
+  <meta charset="UTF-8">
+  <title>事件</title>
+  <style>
+  .wrap {
+    padding: 30px;
+    background: #0f0;
+  }
+  .inner {
+    width: 100px;
+    height: 100px;
+    background: #f00;
+    width: 100px;
+    height: 100px;
+    background: #f00;
+    margin-bottom: 10px;
+  }
+  </style>
 </head>
+
 <body>
-	<div class="wrap">
-		<div class="inner">内部元素</div>
+	<h2>鼠标事件</h2>
+	<button class="clickme">点我</button>
+	<div class="hoverme wrap">
+		<div class="inner">inner</div>
+		<div class="inner">inner</div>
 	</div>
-	<script src="../../../asset/vendor/jquery-2.1.3.min.js"></script>
-	<script>
-	$(document).ready(function () {
-			// 元素在未添加到页面前，绑定的事件也会生效
-		(function(){
-			var $body = $('body');
-			var $a = $('<a>').attr('href', 'javascript:void(0);').text('点我');
-			$a.click(function(){
-				console.log('clicked a');
-			});
-			$body.append($a);
-		})();
+	<h2>键盘事件</h2>
+	<input type="text" class="input">
+  <h2>事件冒泡</h2>
+  <div class="wrap">
+    <div class="inner">内部元素（不冒泡）</div>
+    <div class="inner">内部元素</div>
+  </div>
+  <h2>事件委托</h2>
+  <button class="add-btn">新增条目</button>
+  <ul class="list">
+    <li>本来就在的~</li>
+  </ul>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+  	// 鼠标事件
+  	(function () {
+  		$('.clickme').click(function () {
+  			console.log('单击');
+  		}).dblclick(function () {
+  			console.log('双击');
+  			$(this).off('dblclick');// 取消双击
+  		});
 
-		// 防止事件冒泡
-		(function(){
-			$('.wrap').click(function(){
-				console.log('outer clicked');
-			});
-			$('.inner').click(function(evt){
-				evt.stopPropagation();//防止事件冒泡
-				console.log('inner clicked');
-			});
-		})();
+  		$('.hoverme').hover(function () {
+  			console.log('hover in');
+  		}, function () {
+  			console.log('hover out');
+  		}).move
+  	})();
+  	// 键盘事件
+  	(function () {
+  		// 获得焦点 -> focus -> keydown ->  keypress -> keyup
+  		// 失去焦点 -> change -> blur
+  		$('.input').focus(function () {
+  			console.log('获得焦点');
+  		}).keyup(function (event) {
+  			// 键帽的值
+  			console.log('keyup: 键%s, 值：%s', String.fromCharCode(event.which), event.which);
+  		}).keydown(function (event) {
+  			// 键帽的值
+  			console.log('keydown: 键%s, 值：%s', String.fromCharCode(event.which), event.which);
+  		}).keypress(function (event) {
+  			// 真正显示的值
+  			console.log('keypress: 键%s, 值：%s', String.fromCharCode(event.which), event.which);
+  		}).blur(function () {
+  			console.log('失去焦点');
+  		}).change(function () {
+  			console.log('内容改变了');
+  		})
+  	})();
+    // 事件冒泡
+    (function() {
+      $('.wrap').click(function() {
+        console.log('outer clicked');
+      });
+      $('.inner').click(function(evt) {
+        // 对第一个元素
+        if ($(this).is(':first-child')) {
+          evt.stopPropagation(); //防止事件冒泡
+        }
+        console.log('inner clicked');
+      });
+    })();
 
+    // 事件委托
+    (function() {
+      var $list = $('.list');
+      $('.add-btn').click(function() {
+        var $li = $('<li>');
+        $li.text('新生成的：' + Math.random().toFixed(3));
+        $list.append($li);
+      });
+      // 给本来就在的li绑定事件
+      $list.find('li').click(function() {
+        console.log('click li');
+      });
+      $list.on('click', 'li', function() {
+        console.log('委托~')
+      });
+    })();
 
-	});
-	</script>
+    // 元素在未添加到页面前，绑定的事件也会生效
+    // (function(){
+    // 	var $body = $('body');
+    // 	var $a = $('<a>').attr('href', 'javascript:void(0);').text('点我');
+    // 	$a.click(function(){
+    // 		console.log('clicked a');
+    // 	});
+    // 	$body.append($a);
+    // })();
+
+  });
+  </script>
 </body>
+
 </html>

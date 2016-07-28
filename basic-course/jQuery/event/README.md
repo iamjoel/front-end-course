@@ -5,22 +5,24 @@
 $elem.on(事件名称, 事件处理函数)
 ```
 
-### 事件委托
-```
-$par.on(事件名称, 委托元素, 事件处理函数)
-```
-
 ### 简写
 * click
-* dblclick
-* change
-* hover
+* dblclick 双击
+* change 表单元素的值发生变化
+* hover 移动到元素上和移出
 * keyup
 * keydown
 * keypress
 * focus
 * blur
 * ...
+
+### 事件委托
+给动态生成的元素绑定事件，需要
+```
+$par.on(事件名称, 委托元素, 事件处理函数)
+```
+
 
 ## 解绑事件
 ### 解除某类型事件的所有事件处理函数
