@@ -5,7 +5,9 @@
 $elem.on(事件名称, 事件处理函数)
 ```
 
-### 简写
+### 常见事件
+* ready : DOM树构建完成。`$(document).ready(callback)`
+* load: 页面加载完毕。 `$(document).load(callback)`
 * click
 * dblclick 双击
 * mouseenter

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>defferred</title>
+</head>
+
+<body>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+  var thing1Res;
+  var thing2Res;
+  var thing3Res;
+
+  function doThing1() {
+    var dfd = $.Deferred();
+
+    setTimeout(function() {
+      // alert(1);
+      thing1Res = 'thing1';
+      console.log('thing1 done');
+      dfd.resolve('thing1');
+    }, 300);
+    return dfd.promise();
+  }
+
+  function doThing2(data) {
+    var dfd = $.Deferred();
+    setTimeout(function() {
+      // alert(2 + data);
+      thing2Res = 'thing2';
+      console.log('thing2 done');
+      dfd.resolve('thing2');
+    }, 200);
+    return dfd.promise();
+  }
+
+  function doThing3(data) {
+    var dfd = $.Deferred();
+    setTimeout(function() {
+      // alert(3 + data);
+      thing3Res = 'thing3';
+      console.log('thing3 done');
+      dfd.resolve('thing3');
+    }, 200);
+    return dfd.promise();
+  }
+  // 串行
+  doThing1().done(doThing2().done(doThing3().done(function (data3) {
+    alert([thing1Res, thing2Res, thing3Res].join() + '串行 all done');
+  })));
+  // doThing1().done(doThing2).done(doThing3).done(function() {
+  //   // console.log(arguments);
+  //   console.log([thing1Res, thing2Res, thing3Res].join() + '串行 all done');
+  // }).done(function () {
+  //   console.log('111');
+  // }).done(function () {
+  //   console.log('2');
+  // });
+  
+
+  // 并行
+  // $.when(doThing1(), doThing2(), doThing3()).done(function (data1, data2, data3) {
+  //   console.log([data1, data2, data3].join() + '并行 all done');
+  // });
+  </script>
+</body>
+
+</html>
