@@ -49,11 +49,16 @@ $.ajaxSetup({
 
 详细见[这里](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)。
 
-## 服务器加跨域头
+## 服务器加跨域头(跨域资源共享 CORS)
 
 ```
 Access-Control-Allow-Origin: http://api.bob.com
+或
+Access-Control-Allow-Origin: *
+
 ```
+
+详细见[这里](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 ## jsonp
 客户端
