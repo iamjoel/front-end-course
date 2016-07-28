@@ -16,6 +16,16 @@ JSON 值可以是
 * 对象（在花括号中）
 * null
 
+JSON demo
+```
+{
+  "name": "Kitty",
+  "age": 1,
+  "describe": "She is a Cat",
+  "Children": ["a", "b", "c"]
+}
+```
+
 ## 常用方法
 * JSON.stringify(json) 将 JSON 转换成字符串
 * JSON.parse(jsonString) 将 jsonStrng 转化为对象
