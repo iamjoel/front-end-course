@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax</title>
+</head>
+<body>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script >
+    (function () {
+      $.ajax({
+        url: 'demo.json',
+        // type: 'post'
+      }).done(function (data) {
+        console.log(data);
+      }).fail(function (error) {
+        console.error(error);
+      });
+    })();
+  </script>
+</body>
+</html>

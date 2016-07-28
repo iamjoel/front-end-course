@@ -44,13 +44,35 @@ $.ajaxSetup({
 ```
 不建议
 
+## 跨域 Ajax
+如果不做处理，由于同源策略，ajax 是不能跨域的。解决方式主要有两种：服务器加跨域头和jsonp。
+
+详细见[这里](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)。
+
+## 服务器加跨域头
+
+```
+Access-Control-Allow-Origin: http://api.bob.com
+```
+
 ## jsonp
+客户端
+```
+<script src="http://example.com/ip?callback=foo"></script>
+<script>
+  window.foo = function (data) {
+    // 服务器端返回后
+  }
+</script>
+```
 
+服务器端返回
+```
+foo({
+  "ip": "8.8.8.8"
+});
+```
 
-## promise
-* done
-* fail
-* always
 
 ## 参考
 http://api.jquery.com/jQuery.ajax/
