@@ -35,11 +35,14 @@
     <div class="inner">内部元素（不冒泡）</div>
     <div class="inner">内部元素</div>
   </div>
+  <h2>阻止元素的默认行为</h2>
+  <a href="http://www.sina.com" class="not-jump-link">跳不了</a>
   <h2>事件委托</h2>
   <button class="add-btn">新增条目</button>
   <ul class="list">
     <li>本来就在的~</li>
   </ul>
+
   <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
   <script>
   $(document).ready(function() {
@@ -56,7 +59,9 @@
   			console.log('hover in');
   		}, function () {
   			console.log('hover out');
-  		}).move
+  		}).mouseout(function () {
+        console.log('moveout');
+      })
   	})();
   	// 键盘事件
   	(function () {
@@ -91,6 +96,14 @@
         }
         console.log('inner clicked');
       });
+    })();
+
+    // 阻止元素的默认行为
+    (function () {
+      $('.not-jump-link').click(function (event) {
+        event.preventDefault(); // 阻止元素的默认行为
+        console.log('不跳页面~');
+      })
     })();
 
     // 事件委托

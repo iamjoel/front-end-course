@@ -11,7 +11,7 @@ $elem.on(事件名称, 事件处理函数)
 * mouseenter
 * mouseleave
 * mousemove
-* mouseout
+* mouseout 移出。移入子元素也会触发。
 * hover 移动到元素上和移出。 等效与 mouseenter 和 mouseleave
 * change 表单元素的值发生变化
 * keyup

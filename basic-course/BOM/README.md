@@ -19,8 +19,8 @@
   * search
   * hash
   * reload()
-  * assign()
-  * replace()
+  * assign(url)
+  * replace(url)
 * window
   * alert()
   * confirm()
