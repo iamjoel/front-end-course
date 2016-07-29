@@ -7,7 +7,27 @@ function aysnFetchData(callbackFn){
 aysnFetchData(doSthFn);
 ```
 
-上面是最简单的情况。但当异步比较复杂的时候，代码会比较难组织。 
+上面是最简单的情况。但当异步比较复杂的时候，代码会比较难组织。如
+```
+$.ajax({
+  url:'targetUrl1',
+  success:function(d1){
+    //ajax2
+    $.ajax({
+      url:'targetUrl2',
+      success:function(d2){
+        //ajax3
+        $.ajax({
+          url:'targetUrl3',
+          success:function(d3){
+            //终于写完了
+          }
+        });
+      }
+    });
+  }
+})
+```
 
 jQuery 的 Deferred 是用来组织异步代码的。
 
@@ -36,14 +56,14 @@ function doThingA() {
 *  doThingA 中执行 dfd.reject 后执行 failFn
 *  doThingA 中执行 dfd.resolve 或 dfd.reject 均执行 alwaysFn
 */
-doThingA.done(successFn).fail(failFn).always(alwaysFn);
+doThingA.then(successFn, failFn).always(alwaysFn);
 ```
 
 jQuery 的 $.ajax 返回的就是一个 Promise 对象。如
 ```
 $.ajax({
   //...
-}).done(successFn).fail(failFn)；
+}).then(successFn, failFn)；
 ```
 
 下面我会结合具体情况来介绍 Deferred 的使用。
@@ -108,10 +128,10 @@ function doTingN(dataArr){
 var dataArr = [];
 
 doThing1()
-  .done(doThing2).fail(doTing1FailFn)
-  .done(doThing3).fail(doTing2FailFn)
+  .then(doThing2, doTing1FailFn)
+  .then(doThing3, doTing2FailFn)
   // ...
-  .done(doThingN).fail(doTingNMinus1FailFn);
+  .then(doThingN, doTingN1FailFn)
 ```
 
 是不是清晰了很多~

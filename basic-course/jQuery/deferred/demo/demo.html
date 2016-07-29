@@ -17,53 +17,48 @@
     var dfd = $.Deferred();
 
     setTimeout(function() {
-      // alert(1);
       thing1Res = 'thing1';
       console.log('thing1 done');
       dfd.resolve('thing1');
-    }, 300);
+    }, 100);
     return dfd.promise();
   }
 
   function doThing2(data) {
     var dfd = $.Deferred();
     setTimeout(function() {
-      // alert(2 + data);
       thing2Res = 'thing2';
       console.log('thing2 done');
       dfd.resolve('thing2');
-    }, 200);
+    }, 400);
     return dfd.promise();
   }
 
   function doThing3(data) {
     var dfd = $.Deferred();
     setTimeout(function() {
-      // alert(3 + data);
       thing3Res = 'thing3';
       console.log('thing3 done');
       dfd.resolve('thing3');
-    }, 200);
+    }, 50);
     return dfd.promise();
   }
   // 串行
-  doThing1().done(doThing2().done(doThing3().done(function (data3) {
-    alert([thing1Res, thing2Res, thing3Res].join() + '串行 all done');
-  })));
-  // doThing1().done(doThing2).done(doThing3).done(function() {
-  //   // console.log(arguments);
-  //   console.log([thing1Res, thing2Res, thing3Res].join() + '串行 all done');
-  // }).done(function () {
-  //   console.log('111');
-  // }).done(function () {
-  //   console.log('2');
-  // });
-  
-
-  // 并行
-  // $.when(doThing1(), doThing2(), doThing3()).done(function (data1, data2, data3) {
-  //   console.log([data1, data2, data3].join() + '并行 all done');
-  // });
+  doThing1()
+    .then(doThing2)
+    .then(doThing3)
+    .then(function() {
+      console.info([thing1Res, thing2Res, thing3Res].join() + '串行 all done');
+      // 并行
+      $.when(doThing1(), doThing2(), doThing3()).done(function (data1, data2, data3) {
+        console.info([data1, data2, data3].join() + '并行 all done');
+        doThing1().then(function () {
+          return $.when(doThing2(), doThing3());
+        }).then(function () {
+          console.info('串+并行 all done');
+        })
+      });
+    });
   </script>
 </body>
 
