@@ -45,7 +45,7 @@ Vue.directive('infinite-scroll', {
 
   },
   unbind: function() {
-    element.removeEventListener('scroll');
+    this.$el.unbind('scroll');
   }
 });
 
