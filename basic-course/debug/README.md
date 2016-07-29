@@ -14,6 +14,6 @@
     * log 异步请求
   * 其他 Tab
 * 移动端调试
-  * wenire
+  * [Weinre](https://github.com/nupthale/weinre) 基于Web Inspector(Webkit)的远程调试工具， 它使用JS编写， 可以让我们在电脑上直接调试运行在手机上的远程页面。
 * 微信调试
   * [微信开发工具](https://mp.weixin.qq.com/wiki/10/e5f772f4521da17fa0d7304f68b97d7e.html)
