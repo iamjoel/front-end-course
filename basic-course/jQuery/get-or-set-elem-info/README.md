@@ -68,6 +68,12 @@ $(selector).prop('outerHTML');
 $(selector).text();
 ```
 
+## 插入元素
+* before
+* after
+* prepend
+* append
+
 ## 数据
 .data
 
