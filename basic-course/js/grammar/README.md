@@ -193,43 +193,5 @@ c;// 访问不了
 ```
 
 ## this
-this 指向调用该函数的对象。
-
-```
-var name = 'joel';
-function say(){
-  console.log(this.name);
-};
-say();// 输出：joel
-console.log(this.name);// 输出：joel
-
-var info = {
-  name: 'info',
-  des: '...',
-  sayIt: function(){console.log(this.name);}
-};
-
-info.sayIt(); // 输出：info
-
-var another = {
-  name: 'another'
-}
-
-info.sayIt.call(another);// 输出：another
-var c = info.sayIt;
-c();
-info.sayIt.bind(another)(); // 输出：another
-
-setTimeout(info.sayIt, 10);// 输出: joel
-setTimeout(function(){
-  info.sayIt(); // 输出: info
-}, 10);
-setTimeout(info.sayIt.bind(info), 10); // 输出: info
-
-functon changeThis(callback){
-  callback.call(window);
-}
-changeThis(info.sayIt);
-```
-
+见[这里](this)。
 
