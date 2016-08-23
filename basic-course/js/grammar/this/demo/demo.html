@@ -8,53 +8,64 @@
 
 <body>
   <script>
-  var name = 'joel';
-
-  function say() {
-    console.log(this.name);
-  };
-  say(); // 输出：joel
-  console.log(this.name); // 输出：joel
-
-  var info = {
-    name: 'info',
-    des: '...',
-    sayIt: function() {
-      console.log(this.name);
-    }
-  };
-
-  info.sayIt(); // 输出：info
-
-  function doCallBack(callback) {
-    callback();
-  }
-
-  doCallBack(info.sayIt); // 输出： joel
-
   (function() {
-    console.log(this.name);
+    console.log('*********0*********');
+    console.log(this === window);
+    var dog = {
+      name: '旺财',
+      describe: function() {
+        console.log('汪汪，我是' + this.name);
+      }
+    };
+    console.log('*********1*********');
+    dog.describe(); // 1
+
+    var Cat = function(name) {
+      this.name = name;
+    };
+    Cat.prototype = {
+      describe: function() {
+        console.log('喵喵，我是' + this.name);
+      }
+    };
+
+    var cat = new Cat('咪啊');
+    console.log('*********2*********');
+    cat.describe(); // 2
+
+    dog.catLikeDescribe = cat.describe;
+    console.log('*********1*********');
+    dog.catLikeDescribe(); // 3
+
+    window.name = '全局对象';
+    var describe = dog.describe;
+    console.log('*********4*********');
+    describe(); // 4
+
+    dog.describeWithOther = function(describeFn) {
+      this.describe();
+      describeFn();
+    };
+    console.log('*********5*********');
+    dog.describeWithOther(cat.describe); // 5
+    console.log('*********6*********');
+    dog.describeWithOther.call(cat, cat.describe); // 6
+    console.log('*********7*********');
+    dog.describeWithOther(cat.describe.bind(cat)); // 7
+
   })();
 
-  var another = {
-    name: 'another'
-  }
-
-  info.sayIt.call(another); // 输出：another
-  var c = info.sayIt;
-  c();
-  info.sayIt.bind(another)(); // 输出：another
-
-  setTimeout(info.sayIt, 10); // 输出: joel
-  setTimeout(function() {
-    info.sayIt(); // 输出: info
-  }, 10);
-  setTimeout(info.sayIt.bind(info), 10); // 输出: info
-
-  functon changeThis(callback) {
-    callback.call(window);
-  }
-  changeThis(info.sayIt);
+  // 输出的值
+  /*
+  0 true
+  1 汪汪，我是旺财
+  2 喵喵，我是咪啊
+  3 喵喵，我是旺财
+  4 汪汪，我是全局对象
+  5 汪汪，我是旺财 喵喵，我是全局对象
+  6 喵喵，我是咪啊 喵喵，我是全局对象
+  7 汪汪，我是旺财 喵喵，我是咪啊
+  */
   </script>
 </body>
 
