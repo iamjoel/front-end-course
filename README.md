@@ -14,6 +14,8 @@
 ![微信](wechat.jpg)
 
 ## 课程
+[方法论](how-to)
+
 ### HTML
 * 用 Markdown 来写文档
 
