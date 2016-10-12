@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>商品列表</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <div class="list">
+    <h1>商品列表</h1>
     <div class="search">
       <div class="search__item">
         <!-- 从高到低，从低到高 -->
-        名称：<input type="text">
+        名称：<input type="text" class="filter-name-input">
       </div>
       <div class="search__item">
         <!-- 从高到低，从低到高 -->
-        价格：<a href="javascript:void(0)">默认</a>
+        按价格排序：<a href="javascript:void(0)" class="sort-price-btn">默认</a>
       </div>
       <div class="search__item">
-        销量：<a href="javascript:void(0)">默认</a>
+        按销量排序：<a href="javascript:void(0)" class="sort-sale-num-btn">默认</a>
       </div>
-      <a href="javascript:void(0)" class="search-btn">搜索</a>
+      <a href="javascript:void(0)" class="search__btn">搜索</a>
     </div>
     <ul class="list__content">
-      <li class="list__item">
-        <div class="list__item-name">苹果</div>
-        <div class="list__item-price">价格:14RMB</div>
-        <div class="list__item-num">销量:133</div>
-      </li>
     </ul>
   </div>
+  <script type="text/template" id="item-template">
+    <li class="list__item ly">
+        <div class="list__item-name ly__item">{name}</div>
+        <div class="list__item-price ly__item">价格:{price}元/斤</div>
+        <div class="list__item-num ly__item">销量:{saleNum}斤</div>
+      </li>
+  </script>
   <script src="assets/vendor/jquery.min.js"></script>
   <script src="assets/index.js"></script>
 </body>
