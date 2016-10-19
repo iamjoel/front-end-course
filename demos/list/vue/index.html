@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>商品列表</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="list" v-cloak>
+    <h1>商品列表</h1>
+    <div class="search">
+      <div class="search__item">
+        <!-- 从高到低，从低到高 -->
+        名称：
+        <input type="text" class="filter-name-input" v-model="filterObj.name">
+      </div>
+      <div class="search__item">
+        <!-- 从高到低，从低到高 -->
+        按价格排序：<a href="javascript:void(0)" class="sort-price-btn" @click="sort('price')">{{getSortName('price')}}</a>
+      </div>
+      <div class="search__item">
+        按销量排序：<a href="javascript:void(0)" class="sort-sale-num-btn"@click="sort('saleNum')">{{getSortName('saleNum')}}</a>
+      </div>
+      <a href="javascript:void(0)" class="search__btn" @click="search()">搜索</a>
+    </div>
+    <ul class="list__content">
+      <li class="list__item ly" v-for="item in list">
+        <div class=" list__item-name ly__item ">{{item.name}}</div>
+        <div class="list__item-price ly__item ">价格:{{item.price}}元/斤</div>
+        <div class="list__item-num ly__item ">销量:{{item.saleNum}}斤</div>
+      </li>
+    </ul>
+  </div>
+  <script src="assets/vendor/vue.min.js"></script>
+  <script src="assets/index.js "></script>
+</body>
+</html>
