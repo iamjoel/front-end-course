@@ -27,3 +27,10 @@
   * [开发者头条](http://toutiao.io/)
   * [编程狂人](http://www.tuicool.com/mags) 为IT人打造的行业技术周刊
   * [极客头条](http://geek.csdn.net/)
+* 搜索问题
+  * Google 
+    * [Google 高级搜索页](https://www.google.com/advanced_search)
+    * [搜索运算符](https://support.google.com/websearch/answer/2466433)
+  * 问答网站
+    * [Stack overflow](http://stackoverflow.com/)
+    * [segmentfault](https://segmentfault.com) 国内的问答社区。

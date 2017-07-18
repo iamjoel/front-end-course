@@ -1,9 +1,5 @@
-# 精简课程
-## 基础
-* 基础能力 2课时
-  * 刻意练习
-  * 学会提问
-  * 克服拖延
+# 课程
+## 目录
 * Web 前端介绍 1课时
   * [介绍](intro/intro.md)
   * [常用开发软件](intro/software.md)
@@ -54,7 +50,7 @@
 * [Codewars](http://www.codewars.com/)
 * [LeetCode](https://leetcode.com/)
 
-## 进阶
+## 更多
 * CSS3
   * 过渡和动画
   * 变形
