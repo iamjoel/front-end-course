@@ -1,5 +1,9 @@
 # 精简课程
 ## 基础
+* 基础能力 2课时
+  * 刻意练习
+  * 学会提问
+  * 克服拖延
 * Web 前端介绍 1课时
   * [介绍](intro/intro.md)
   * [常用开发软件](intro/software.md)
@@ -28,6 +32,7 @@
 * 浏览器相关介绍 1课时
   * [DOM](DOM)
   * [BOM](BOM)
+* ES6 2课时
 * [jQuery](jQuery) 5课时
   * [选择元素](jQuery/select-elem)
   * [遍历元素](jQuery/iterator)
@@ -36,9 +41,13 @@
   * [事件](jQuery/event)
   * [异步流程控制](jQuery/deferred)
   * [动画](jQuery/animate)
+* Vue 5课时
+  * 数据的双向绑定
+  * 事件
+  * 组件
+* 前端工程化 2课时
 * [调试代码](debug) 1课时
-
-总共 20 课时
+* 团队写作
 
 学习实践网站
 * [FreeCodeCamp](https://freecodecamp.cn/)
