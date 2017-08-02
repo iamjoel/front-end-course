@@ -21,7 +21,7 @@
 ## 关于我
 * 丰富的前端开发和管理经验。负责开发过旅游电商，点餐，游戏统计后台等多种类型的项目。
 * 丰富的培训经验。带过10+的新人（有零基础的），企业做培训和分享，效果不错。
-* 擅长知识的总结。已写 三百多原创文章，有一千多粉丝。见[这里](http://www.jianshu.com/u/EhUmA3)。在 GitHub 有 Star 为500的项目，见[这里](https://github.com/iamjoel/front-end-plugins)。
+* 擅长知识的总结。已写 三百多原创文章，有一千多粉丝。见[这里](http://www.jianshu.com/u/EhUmA3)。在 GitHub 有 Star 为 500+ 的项目，见[这里](https://github.com/iamjoel/front-end-plugins)。
 * 运营着100多人的前端学习交流群。
 
 ## 课程
